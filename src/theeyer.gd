@@ -1,4 +1,5 @@
 extends Node2D
+class_name TheYeyer
 
 @onready var time_to_strike = 2
 @onready var sword1: Node2D
@@ -38,17 +39,30 @@ func strike():
 	get_tree().root.get_node('Simulation').add_child(spr)
 	spr.global_position = global_position
 
+	var diff = Player.Instance.global_position - global_position
+	diff.y = 0;
+	diff = diff.normalized() * 80
+
 	if strike_tween: strike_tween.stop()
 	strike_tween = create_tween()
 	strike_tween.tween_property(spr, 'position', Player.Instance.global_position, 0.3)
 	strike_tween.tween_callback(func(): 
-		Player.Instance.get_node('controller').enabled = false
 		spr.queue_free();
+		Player.Instance.get_node('controller').enabled = false
 		get_tree().root.get_node('Simulation/Cam').add_stress(0.9)
+
+		if TheYeyer.StrikesHitNearSwords == 0:
+			if sword1.global_position.distance_to(Player.Instance.global_position) < 1200:
+				print('drop the sword1!')
+				sword1.get_node('AnimationPlayer').play('drop')
+				TheYeyer.StrikesHitNearSwords = 1
+		elif TheYeyer.StrikesHitNearSwords == 1:
+			if sword2.global_position.distance_to(Player.Instance.global_position) < 700:
+				print('drop the shield!')
+				shield.get_node('AnimationPlayer').play('drop')
+				TheYeyer.StrikesHitNearSwords = 2
+
 	);
-	var diff = Player.Instance.global_position - global_position
-	diff.y = 0;
-	diff = diff.normalized() * 80
 	strike_tween.tween_property(Player.Instance, 'position:x', diff.x, 0.2).as_relative()
 	strike_tween.tween_callback(func(): 
 		Player.Instance.get_node('controller').enabled = true

@@ -31,6 +31,9 @@ func _process(_delta):
 	
 func _process_shake(center, angle, delta) -> void:
 	shake = stress * stress
+	if shake == 0:
+		offset = Vector2.ZERO
+		return
 
 	rotation_degrees = angle + (max_roll * shake *  _get_noise(randi(), delta))
 	
@@ -39,10 +42,7 @@ func _process_shake(center, angle, delta) -> void:
 	off.y = (max_offset * shake * _get_noise(randi(), delta + 2.0))
 	off *= 100
 
-	print(off)
-	
-	offset.x = center.x + off.x
-	offset.y = center.y + off.y
+	offset = off
 		
 	stress -= (shakeReduction / 100.0)
 	
