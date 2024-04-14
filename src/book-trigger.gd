@@ -15,6 +15,7 @@ var last_target
 func _ready():
 	assert(cam)
 	assert(vtarget)
+	vtarget.visible = false
 
 func interact(issuer):
 	if not locked:
