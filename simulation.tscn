@@ -841,14 +841,14 @@ position = Vector2(276.355, -163.561)
 scale = Vector2(0.441406, 0.441406)
 texture = ExtResource("37_qqkl2")
 
-[node name="Swords?" type="Sprite2D" parent="."]
+[node name="Sword1" type="Sprite2D" parent="."]
 position = Vector2(214.355, -224.561)
 rotation = -0.74816
 scale = Vector2(0.714286, 0.714286)
 texture = ExtResource("38_lug38")
 offset = Vector2(-3.26353, 85.6242)
 
-[node name="Swords?2" type="Sprite2D" parent="."]
+[node name="Sword2" type="Sprite2D" parent="."]
 position = Vector2(321.355, -224.561)
 rotation = 0.761089
 scale = Vector2(0.714286, 0.714286)
