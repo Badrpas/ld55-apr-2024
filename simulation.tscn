@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=65 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="31_1tu66"]
 [ext_resource type="Script" path="res://src/Roses.gd" id="32_q3uk5"]
 [ext_resource type="PackedScene" uid="uid://cmicflpi76s2g" path="res://skull.tscn" id="36_mdrnu"]
+[ext_resource type="Script" path="res://src/walk_area.gd" id="37_brcjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
 size = Vector2(5741, 287)
@@ -262,6 +263,11 @@ radius = 100.125
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbwaw"]
 size = Vector2(303.5, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oykyo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go535"]
+size = Vector2(3646, 530.5)
 
 [node name="Simulation" type="Node2D"]
 y_sort_enabled = true
@@ -619,6 +625,7 @@ position = Vector2(-11, -54)
 shape = SubResource("CircleShape2D_yxk40")
 
 [node name="cam_target" type="Node2D" parent="book_trigger"]
+z_index = 950
 position = Vector2(-376, 533)
 
 [node name="HexagonHint" type="Sprite2D" parent="book_trigger/cam_target"]
@@ -626,7 +633,6 @@ position = Vector2(-233, -8)
 texture = ExtResource("23_y74tx")
 
 [node name="Phial" type="Sprite2D" parent="book_trigger/cam_target"]
-z_index = 252
 position = Vector2(239, -36)
 texture = ExtResource("24_7kaxt")
 
@@ -687,7 +693,7 @@ position = Vector2(87, -212)
 rotation = 0.00201594
 script = ExtResource("2_kbiok")
 pawn = NodePath("..")
-speed = 1200.0
+speed = 700.0
 
 [node name="Roses" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
 position = Vector2(-1302, 92)
@@ -715,6 +721,17 @@ rotation = -1.2374
 [node name="Bottle2" parent="." instance=ExtResource("29_opi3t")]
 position = Vector2(212, 519)
 ingredients = Array[String](["rose"])
+
+[node name="walk_area" type="Node2D" parent="."]
+script = ExtResource("37_brcjq")
+shape = SubResource("RectangleShape2D_oykyo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walk_area"]
+position = Vector2(223, 649.25)
+shape = SubResource("RectangleShape2D_go535")
+debug_color = Color(0.960784, 0.196078, 0, 0)
+
+[node name="Bottle" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="Book/Area2D" to="Book" method="on_enter_smth"]
 [connection signal="body_exited" from="Book/Area2D" to="Book" method="on_exit_smth"]

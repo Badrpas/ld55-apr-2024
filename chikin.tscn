@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c40ynrs1svlj6"]
+[gd_scene load_steps=5 format=3 uid="uid://c40ynrs1svlj6"]
 
 [ext_resource type="Script" path="res://src/chikin.gd" id="1_h5fsi"]
 [ext_resource type="Texture2D" uid="uid://cxbxrixc1hkyo" path="res://assets/chikin.png" id="1_m8xb6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdsqr"]
+radius = 418.617
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jny8g"]
+radius = 110.005
 
 [node name="Chikin" type="Node2D"]
 script = ExtResource("1_h5fsi")
@@ -10,3 +16,19 @@ script = ExtResource("1_h5fsi")
 position = Vector2(-5, -49)
 scale = Vector2(0.23913, 0.23913)
 texture = ExtResource("1_m8xb6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fdsqr")
+debug_color = Color(0.894118, 0, 0.780392, 0)
+
+[node name="shedding_spot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shedding_spot"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_jny8g")
+debug_color = Color(0.815686, 0.403922, 0.0745098, 0.109804)
+
+[connection signal="body_entered" from="Area2D" to="." method="player_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="player_exited"]
