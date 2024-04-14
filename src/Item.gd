@@ -6,6 +6,10 @@ class_name Item
 
 var is_taken = false
 
+func _ready():
+    assert(identifier != 'unset')
+
+
 func is_interactable(issuer):
     return enabled and not is_taken and issuer.holder_slot.get_child_count() == 0
 

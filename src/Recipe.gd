@@ -7,6 +7,8 @@ static var ID_TO_IMG = {
 	'diamond': preload('res://assets/ehh/static/shelfG/diamond.png'),
 	'skull': preload('res://assets/ehh/static/shelfG/skull.png'),
 	'eye': preload('res://assets/ehh/static/shelf2/eye.png'),
+	'eyer': preload('res://assets/theyeyer.png'),
+	'feather': preload('res://assets/feather.png'),
 }
 
 var result: PackedScene
@@ -29,6 +31,13 @@ static func GetList() -> Array[Recipe]:
     r.result_id = 'eye'
     r.items.append_array(['diamond', 'skull']);
     r.catalyst.append_array(['rose'])
+    arr.append(r)
+
+    r = Recipe.new()
+    r.result = load('res://theeyer.tscn')
+    r.result_id = 'eyer'
+    r.items.append_array(['eye', 'skull', 'feather']);
+    r.catalyst.append_array(['rose', 'feather'])
     arr.append(r)
 
     return arr

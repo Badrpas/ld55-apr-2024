@@ -22,7 +22,7 @@ func _summon():
     for recipe in Recipes:
         var cata_ok = true
         for reagent in recipe.catalyst:
-            if not ingredients.has(reagent): cata_ok = false; break
+            if not ingredients.has(reagent): cata_ok = false; print('checking ', recipe.result_id, " didn't find cata ", reagent); break
         if not cata_ok: continue;
 
         var slotted_items = []
@@ -30,14 +30,14 @@ func _summon():
             var item: Interactable = _get_item_from_slot(slot)
             if item: slotted_items.append(item)
 
-        if slotted_items.size() != recipe.items.size(): continue
+        if slotted_items.size() != recipe.items.size(): print('checking ', recipe.result_id, " sizes don't match ", slotted_items.size(), ' ', recipe.items.size()); continue
 
         var items_ok = true
         for req_item in recipe.items:
             var item_found = false
             for item in slotted_items:
                 if item.identifier == req_item: item_found = true; break
-            if not item_found: items_ok = false; break
+            if not item_found: items_ok = false; print('checking ', recipe.result_id, " didn't find req_item", req_item); break
         if not items_ok: continue;
 
         target_recipe = recipe

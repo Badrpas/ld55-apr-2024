@@ -9,6 +9,7 @@ radius = 75.0117
 [node name="Feather" type="Node2D" node_paths=PackedStringArray("override_root") groups=["feathers"]]
 scale = Vector2(0.903966, 0.903966)
 script = ExtResource("1_ktmkk")
+identifier = "feather"
 override_root = NodePath(".")
 
 [node name="Feather" type="Sprite2D" parent="."]
