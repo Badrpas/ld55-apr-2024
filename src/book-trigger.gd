@@ -60,7 +60,9 @@ func upd_recipes():
 
 	var recipe = Hexagram.Recipes[idx % Hexagram.Recipes.size()]
 
-	for req_item in recipe.items:
+	var count = recipe.items.size()
+	for i in range(0, count):
+		var req_item = recipe.items[i]
 		if not Recipe.ID_TO_IMG.has(req_item): continue
 		var s: CompressedTexture2D = Recipe.ID_TO_IMG[req_item]
 		if not s: continue;
@@ -68,8 +70,12 @@ func upd_recipes():
 		n.texture = s
 		resize(n, 160)
 		items.add_child(n)
+		if count > 1:
+			n.position += Vector2(1,0).rotated(((2*PI) / count) * i) * 70
 	
-	for req_cata in recipe.catalyst:
+	count = recipe.catalyst.size()
+	for i in range(0, count):
+		var req_cata = recipe.catalyst[i]
 		if not Recipe.ID_TO_IMG.has(req_cata): continue
 		var s: CompressedTexture2D = Recipe.ID_TO_IMG[req_cata]
 		if not s: continue;
@@ -77,6 +83,8 @@ func upd_recipes():
 		n.texture = s
 		resize(n, 160)
 		reagents.add_child(n)
+		if count > 1:
+			n.position += Vector2(1,0).rotated(((2*PI) / count) * i) * 70
 		
 	if Recipe.ID_TO_IMG.has(recipe.result_id):
 		var s: CompressedTexture2D = Recipe.ID_TO_IMG[recipe.result_id]
@@ -91,7 +99,6 @@ func resize(s: Sprite2D, dimm: float):
 	var size = s.texture.get_size()
 	var k = maxf(size.x, size.y)
 	s.scale /= k / dimm
-	print(s, ' size ', s.texture.get_size(), ' bruh ', s.scale)
 	
 
 

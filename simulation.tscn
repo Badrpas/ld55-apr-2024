@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=61 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" path="res://src/book-trigger.gd" id="24_ufxqs"]
 [ext_resource type="PackedScene" uid="uid://c6ox37fqqp5e8" path="res://bottle.tscn" id="29_opi3t"]
 [ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="31_1tu66"]
+[ext_resource type="Script" path="res://src/Roses.gd" id="32_q3uk5"]
 [ext_resource type="PackedScene" uid="uid://cmicflpi76s2g" path="res://skull.tscn" id="36_mdrnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
@@ -88,6 +89,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1s63c"]
 resource_name = "flicker"
+length = 4.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +98,10 @@ tracks/0/path = NodePath("Fire:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.1, 0.85, 0.95, 1.65, 2, 2.1, 2.25, 2.6, 2.7, 2.85, 2.95, 3.05, 3.15, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true, false, true, false, true, false, true]
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -107,7 +110,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(3.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -126,82 +129,10 @@ radius = 129.139
 
 [sub_resource type="Animation" id="Animation_gxejp"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bottle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(940, 370)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Bottle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Bottle:enabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_qth4o"]
 resource_name = "bottle_pop"
 length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bottle:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.1, 1.3, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1259, 263), Vector2(1166, 123), Vector2(997, 347), Vector2(924.696, 390.604), Vector2(890, 378), Vector2(873, 373), Vector2(873, 373), Vector2(890, 378)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Bottle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.1, 1.3, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [3.13937, 1.97666, 0.0, -0.240165, -0.240165, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Bottle:enabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_duckb"]
 _data = {
@@ -661,10 +592,10 @@ position = Vector2(239, -36)
 texture = ExtResource("24_7kaxt")
 
 [node name="items" type="Node2D" parent="book_trigger/cam_target"]
-position = Vector2(-225, -54)
+position = Vector2(-225, -30)
 
 [node name="reagents" type="Node2D" parent="book_trigger/cam_target"]
-position = Vector2(239, -54)
+position = Vector2(249, 0)
 
 [node name="result" type="Node2D" parent="book_trigger/cam_target"]
 position = Vector2(-7, 230)
@@ -719,13 +650,11 @@ script = ExtResource("2_kbiok")
 pawn = NodePath("..")
 speed = 1200.0
 
-[node name="Roses" type="Sprite2D" parent="."]
+[node name="Roses" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
 position = Vector2(-1302, 92)
 texture = ExtResource("19_jgnva")
-
-[node name="Bottle" parent="." instance=ExtResource("29_opi3t")]
-position = Vector2(940, 370)
-ingredients = Array[String](["rose"])
+script = ExtResource("32_q3uk5")
+override_root = NodePath(".")
 
 [node name="Chikin" parent="." instance=ExtResource("31_1tu66")]
 position = Vector2(764, 702)
@@ -736,6 +665,10 @@ position = Vector2(1495, 587)
 [node name="Skull2" parent="." instance=ExtResource("36_mdrnu")]
 position = Vector2(-144, 656)
 rotation = -1.2374
+
+[node name="Bottle2" parent="." instance=ExtResource("29_opi3t")]
+position = Vector2(212, 519)
+ingredients = Array[String](["rose"])
 
 [connection signal="body_entered" from="Book/Area2D" to="Book" method="on_enter_smth"]
 [connection signal="body_exited" from="Book/Area2D" to="Book" method="on_exit_smth"]
