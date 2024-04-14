@@ -3,6 +3,8 @@ extends Node
 @onready var player: Player = $'..'
 @onready var interaction_area = $'../Image/IteractionArea'
 
+@export var verbose = false
+
 signal target_changed(target: Node2D)
 
 var targets: Array[Node2D]
@@ -30,7 +32,6 @@ func _ready():
 	)
 	
 
-@export var verbose = true
 
 func add_potential_target(t: Node2D):
 	var actual_target = _find_holder_target(t)
