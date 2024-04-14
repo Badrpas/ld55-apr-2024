@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwyrn"]
 radius = 94.541
 
-[node name="Bottle" type="Sprite2D"]
+[node name="Bottle" type="Sprite2D" groups=["bottles"]]
 z_index = 50
 scale = Vector2(0.496094, 0.496094)
 texture = ExtResource("1_w6iaw")
