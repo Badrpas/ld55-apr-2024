@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=60 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cg72qe6moinik" path="res://rose.tscn" id="6_hmbcr"]
 [ext_resource type="Script" path="res://src/Consumable.gd" id="7_dmddh"]
 [ext_resource type="Texture2D" uid="uid://q6ta2ebmjuc0" path="res://assets/ehh/static/shelfG/rose.png" id="7_tptl2"]
-[ext_resource type="Texture2D" uid="uid://bnwettpdxjai6" path="res://assets/ehh/static/shelfG/skull.png" id="8_qlu2j"]
 [ext_resource type="Texture2D" uid="uid://dppo4qd2r30q7" path="res://assets/ehh/hexagram/Hexagram.png" id="9_8xp8d"]
 [ext_resource type="Texture2D" uid="uid://dcbj04rnnmnrk" path="res://assets/ehh/hexagram/fire.png" id="9_bvc3j"]
 [ext_resource type="Script" path="res://src/Fire.gd" id="10_xvtus"]
@@ -35,6 +34,7 @@
 [ext_resource type="Script" path="res://src/book-trigger.gd" id="24_ufxqs"]
 [ext_resource type="PackedScene" uid="uid://c6ox37fqqp5e8" path="res://bottle.tscn" id="29_opi3t"]
 [ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="31_1tu66"]
+[ext_resource type="PackedScene" uid="uid://cmicflpi76s2g" path="res://skull.tscn" id="36_mdrnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
 size = Vector2(5741, 287)
@@ -54,9 +54,6 @@ size = Vector2(291, 861.562)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4qbx"]
 radius = 85.4898
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2tu35"]
-radius = 95.5957
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0omr5"]
 radius = 45.8804
@@ -407,21 +404,6 @@ override_root = NodePath(".")
 shape = SubResource("CircleShape2D_b4qbx")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Skull" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
-z_index = 658
-position = Vector2(-268, 656)
-rotation = -0.991567
-scale = Vector2(0.507857, 0.507857)
-texture = ExtResource("8_qlu2j")
-script = ExtResource("11_1iciv")
-identifier = "skull"
-override_root = NodePath(".")
-
-[node name="Area2D" type="Area2D" parent="Skull"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skull/Area2D"]
-shape = SubResource("CircleShape2D_2tu35")
-
 [node name="Shelf" type="Sprite2D" parent="."]
 position = Vector2(24.9999, 95)
 scale = Vector2(0.507857, 0.507857)
@@ -750,6 +732,10 @@ position = Vector2(764, 702)
 
 [node name="Rose2" parent="." instance=ExtResource("6_hmbcr")]
 position = Vector2(1495, 587)
+
+[node name="Skull2" parent="." instance=ExtResource("36_mdrnu")]
+position = Vector2(-144, 656)
+rotation = -1.2374
 
 [connection signal="body_entered" from="Book/Area2D" to="Book" method="on_enter_smth"]
 [connection signal="body_exited" from="Book/Area2D" to="Book" method="on_exit_smth"]
