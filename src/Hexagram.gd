@@ -25,12 +25,17 @@ func _summon():
             if not ingredients.has(reagent): cata_ok = false; break
         if not cata_ok: continue;
 
+        var slotted_items = []
+        for slot in slots.get_children():
+            var item: Interactable = _get_item_from_slot(slot)
+            if item: slotted_items.append(item)
+
+        if slotted_items.size() != recipe.items.size(): continue
+
         var items_ok = true
         for req_item in recipe.items:
             var item_found = false
-            for slot in slots.get_children():
-                var item: Interactable = _get_item_from_slot(slot)
-                if not item: continue;
+            for item in slotted_items:
                 if item.identifier == req_item: item_found = true; break
             if not item_found: items_ok = false; break
         if not items_ok: continue;
@@ -40,7 +45,8 @@ func _summon():
 
     print('foun recipe ', target_recipe)
 
-    fire.visible = not not target_recipe
+    # fire.visible = not not target_recipe
+    # fire.visible = false
     if not target_recipe: return
     
     var summoned = target_recipe.result.instantiate()

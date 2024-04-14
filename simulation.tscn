@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=64 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -33,7 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://bish863gnegs2" path="res://assets/phial.png" id="24_7kaxt"]
 [ext_resource type="Script" path="res://src/book-trigger.gd" id="24_ufxqs"]
 [ext_resource type="PackedScene" uid="uid://c6ox37fqqp5e8" path="res://bottle.tscn" id="29_opi3t"]
-[ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="31_1tu66"]
 [ext_resource type="Script" path="res://src/Roses.gd" id="32_q3uk5"]
 [ext_resource type="PackedScene" uid="uid://cmicflpi76s2g" path="res://skull.tscn" id="36_mdrnu"]
 [ext_resource type="Script" path="res://src/walk_area.gd" id="37_brcjq"]
@@ -57,14 +56,14 @@ size = Vector2(291, 861.562)
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4qbx"]
 radius = 85.4898
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl36s"]
+radius = 91.6195
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0omr5"]
 radius = 45.8804
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w8t0h"]
 radius = 78.9837
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vl36s"]
-radius = 91.6195
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smx12"]
 radius = 34.7922
@@ -380,6 +379,21 @@ override_root = NodePath(".")
 shape = SubResource("CircleShape2D_b4qbx")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
+[node name="Egg" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
+position = Vector2(2027, 802)
+scale = Vector2(0.507858, 0.507858)
+texture = ExtResource("6_b841b")
+offset = Vector2(-0.578053, -22.6498)
+script = ExtResource("11_1iciv")
+identifier = "egg"
+override_root = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="Egg"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Egg/Area2D"]
+shape = SubResource("CircleShape2D_vl36s")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
 [node name="Shelf" type="Sprite2D" parent="."]
 position = Vector2(24.9999, 95)
 scale = Vector2(0.507857, 0.507857)
@@ -421,21 +435,6 @@ script = ExtResource("12_jte48")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot2/Area2D"]
 shape = SubResource("CircleShape2D_0omr5")
 debug_color = Color(0.513726, 0.576471, 0, 0)
-
-[node name="Egg" type="Sprite2D" parent="Shelf/slot_start/slot2" node_paths=PackedStringArray("override_root")]
-position = Vector2(-8.00008, -2.28882e-05)
-scale = Vector2(0.507857, 0.507857)
-texture = ExtResource("6_b841b")
-offset = Vector2(-0.578053, -22.6498)
-script = ExtResource("11_1iciv")
-identifier = "egg"
-override_root = NodePath(".")
-
-[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot2/Egg"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot2/Egg/Area2D"]
-shape = SubResource("CircleShape2D_vl36s")
-debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="slot3" type="Node2D" parent="Shelf/slot_start"]
 position = Vector2(122, 1.52588e-05)
@@ -708,14 +707,11 @@ position = Vector2(-3.75, 98)
 shape = SubResource("RectangleShape2D_jbwaw")
 debug_color = Color(0.792157, 0.415686, 0.282353, 0)
 
-[node name="Chikin" parent="." instance=ExtResource("31_1tu66")]
-position = Vector2(764, 702)
-
 [node name="Rose2" parent="." instance=ExtResource("6_hmbcr")]
 position = Vector2(1495, 587)
 
 [node name="Skull2" parent="." instance=ExtResource("36_mdrnu")]
-position = Vector2(-144, 656)
+position = Vector2(-342, 656)
 rotation = -1.2374
 
 [node name="Bottle2" parent="." instance=ExtResource("29_opi3t")]
