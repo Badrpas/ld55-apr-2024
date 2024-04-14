@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6cr3w01ofst7"]
+
+[ext_resource type="Texture2D" uid="uid://d4ixnjylexkfr" path="res://assets/ehh/player.png" id="1_grwgx"]
+[ext_resource type="Script" path="res://src/Player.gd" id="1_orv62"]
+[ext_resource type="Script" path="res://src/z_sorter.gd" id="2_cjskg"]
+[ext_resource type="Script" path="res://src/player-eventer.gd" id="3_vierx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqx8r"]
+radius = 115.278
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0ph4"]
+radius = 34.0
+height = 114.0
+
+[node name="body" type="CharacterBody2D"]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_orv62")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(2, 6)
+texture = ExtResource("1_grwgx")
+centered = false
+offset = Vector2(-72, -156)
+
+[node name="holder_slot" type="Node2D" parent="Image"]
+position = Vector2(72, -72)
+
+[node name="IteractionArea" type="Area2D" parent="Image"]
+position = Vector2(-2, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Image/IteractionArea"]
+position = Vector2(54, -84)
+shape = SubResource("CircleShape2D_fqx8r")
+debug_color = Color(0.976471, 0, 0.423529, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n0ph4")
+
+[node name="z_sorter" type="Node2D" parent="."]
+script = ExtResource("2_cjskg")
+
+[node name="eventer" type="Node" parent="."]
+script = ExtResource("3_vierx")
+
+[connection signal="area_entered" from="Image/IteractionArea" to="eventer" method="add_potential_target"]
+[connection signal="area_exited" from="Image/IteractionArea" to="eventer" method="remove_potential_target"]

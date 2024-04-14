@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgifncisv3ky8"]
+
+[ext_resource type="Texture2D" uid="uid://c52lerh73hv6w" path="res://assets/ehh/static/shelf2/eye.png" id="1_lv2xw"]
+[ext_resource type="Script" path="res://src/Consumable.gd" id="2_bit80"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjln0"]
+radius = 58.0086
+
+[node name="Eye" type="Sprite2D" node_paths=PackedStringArray("override_root")]
+position = Vector2(17, -9)
+scale = Vector2(0.676337, 0.676337)
+texture = ExtResource("1_lv2xw")
+script = ExtResource("2_bit80")
+identifier = "eye"
+override_root = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-17, -9)
+shape = SubResource("CircleShape2D_cjln0")
+debug_color = Color(0, 0.6, 0.701961, 0)

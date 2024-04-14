@@ -1,0 +1,745 @@
+[gd_scene load_steps=58 format=3 uid="uid://b0oydyhkh1k6n"]
+
+[ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
+[ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
+[ext_resource type="Script" path="res://src/controller.gd" id="2_kbiok"]
+[ext_resource type="Script" path="res://src/CameraController.gd" id="3_jwcsi"]
+[ext_resource type="Texture2D" uid="uid://c44yoa7jpjbmr" path="res://assets/ehh/static/shelfG/shelf.png" id="4_knyru"]
+[ext_resource type="Texture2D" uid="uid://bgl5s8jdcmgt6" path="res://assets/ehh/static/shelfG/diamond.png" id="5_sq7oy"]
+[ext_resource type="Texture2D" uid="uid://bd8es286e1h4j" path="res://assets/ehh/static/shelfG/egg.png" id="6_b841b"]
+[ext_resource type="Script" path="res://src/Consumable.gd" id="7_dmddh"]
+[ext_resource type="Texture2D" uid="uid://q6ta2ebmjuc0" path="res://assets/ehh/static/shelfG/rose.png" id="7_tptl2"]
+[ext_resource type="Texture2D" uid="uid://bnwettpdxjai6" path="res://assets/ehh/static/shelfG/skull.png" id="8_qlu2j"]
+[ext_resource type="Texture2D" uid="uid://dppo4qd2r30q7" path="res://assets/ehh/hexagram/Hexagram.png" id="9_8xp8d"]
+[ext_resource type="Texture2D" uid="uid://dcbj04rnnmnrk" path="res://assets/ehh/hexagram/fire.png" id="9_bvc3j"]
+[ext_resource type="Script" path="res://src/Fire.gd" id="10_xvtus"]
+[ext_resource type="Script" path="res://src/Item.gd" id="11_1iciv"]
+[ext_resource type="Script" path="res://src/ShelfSlot.gd" id="12_jte48"]
+[ext_resource type="Script" path="res://src/Hexagram.gd" id="12_ogqdc"]
+[ext_resource type="Texture2D" uid="uid://b8h6cpycwdls8" path="res://assets/ehh/laddletable/handle.png" id="13_6xin2"]
+[ext_resource type="Texture2D" uid="uid://b2r10v1eetbj6" path="res://assets/ehh/cauldron.png" id="13_8ap6m"]
+[ext_resource type="Script" path="res://src/HexagramSlot.gd" id="13_812fv"]
+[ext_resource type="Script" path="res://src/Book.gd" id="13_wcr8x"]
+[ext_resource type="Texture2D" uid="uid://bnsvdjdp7v2kd" path="res://assets/ehh/laddletable/laddle.png" id="14_i8785"]
+[ext_resource type="Texture2D" uid="uid://d2f8x67pc85qe" path="res://assets/ehh/Recipies/Book.png" id="14_wywgl"]
+[ext_resource type="Texture2D" uid="uid://sewalgtbosok" path="res://assets/wall_bot.png" id="18_5svc0"]
+[ext_resource type="Texture2D" uid="uid://ba2fd7a2hhbog" path="res://assets/window.png" id="19_6x76r"]
+[ext_resource type="Texture2D" uid="uid://c5du42vaxji2p" path="res://assets/roses.png" id="19_jgnva"]
+[ext_resource type="Script" path="res://src/HexagramCenter.gd" id="19_wa0v2"]
+[ext_resource type="Script" path="res://src/Cauldron.gd" id="20_1htyl"]
+[ext_resource type="Script" path="res://src/Window.gd" id="20_vlofx"]
+[ext_resource type="Script" path="res://src/LaddleHandle.gd" id="23_873je"]
+[ext_resource type="Script" path="res://src/book-trigger.gd" id="24_ufxqs"]
+[ext_resource type="PackedScene" uid="uid://c6ox37fqqp5e8" path="res://bottle.tscn" id="29_opi3t"]
+[ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="31_1tu66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
+size = Vector2(5741, 287)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gt7ks"]
+radius = 40.0
+height = 142.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wybo"]
+radius = 115.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joe0i"]
+size = Vector2(282.318, 783.304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy0y8"]
+size = Vector2(291, 861.562)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4qbx"]
+radius = 85.4898
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tu35"]
+radius = 95.5957
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0omr5"]
+radius = 45.8804
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8t0h"]
+radius = 78.9837
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl36s"]
+radius = 91.6195
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_smx12"]
+radius = 34.7922
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbkse"]
+radius = 78.0
+height = 156.0
+
+[sub_resource type="Animation" id="Animation_06lte"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1s63c"]
+resource_name = "flicker"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_summon"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxlpp"]
+_data = {
+"RESET": SubResource("Animation_06lte"),
+"flicker": SubResource("Animation_1s63c")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu742"]
+radius = 129.139
+
+[sub_resource type="Animation" id="Animation_gxejp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(940, 370)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottle:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qth4o"]
+resource_name = "bottle_pop"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottle:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.1, 1.3, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1259, 263), Vector2(1166, 123), Vector2(997, 347), Vector2(924.696, 390.604), Vector2(890, 378), Vector2(873, 373), Vector2(873, 373), Vector2(890, 378)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1, 1.3, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.13937, 1.97666, 0.0, -0.240165, -0.240165, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bottle:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duckb"]
+_data = {
+"RESET": SubResource("Animation_gxejp"),
+"bottle_pop": SubResource("Animation_qth4o")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxk40"]
+radius = 33.2415
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5r0t"]
+size = Vector2(89, 59)
+
+[sub_resource type="Animation" id="Animation_c3okm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-70, 37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dem6b"]
+resource_name = "mix"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5, 2.1, 2.5, 2.8, 3.1, 3.4, 3.8, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-70, 37), Vector2(-207, -39), Vector2(-245, 67), Vector2(-310, 74), Vector2(-242, 90), Vector2(-310, 74), Vector2(-245, 67), Vector2(-310, 74), Vector2(-242, 90), Vector2(-164, 15), Vector2(-70, 37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5, 2.1, 2.5, 2.8, 3.1, 3.4, 3.8, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.404877, 0.610502, -0.221473, 0.477803, -0.221473, 0.610502, -0.221473, 0.477803, 0.985745, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Cauldron")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"laddle_callback"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0ytq"]
+_data = {
+"RESET": SubResource("Animation_c3okm"),
+"mix": SubResource("Animation_dem6b")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uog5s"]
+radius = 100.125
+
+[node name="Simulation" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_vo1iw")
+
+[node name="colliders" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(488.25, 130.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders"]
+position = Vector2(159.25, 0)
+shape = SubResource("RectangleShape2D_cwvet")
+debug_color = Color(0, 0.584314, 0.776471, 0.0823529)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders"]
+position = Vector2(-1239.25, 173.5)
+shape = SubResource("CapsuleShape2D_gt7ks")
+debug_color = Color(0, 0.584314, 0.776471, 0.0823529)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders"]
+position = Vector2(767.75, 154.5)
+shape = SubResource("CircleShape2D_6wybo")
+
+[node name="WallBot" type="Sprite2D" parent="colliders"]
+position = Vector2(-780.25, 136.5)
+texture = ExtResource("18_5svc0")
+
+[node name="WallBot" type="Sprite2D" parent="colliders/WallBot"]
+position = Vector2(511, -2)
+texture = ExtResource("18_5svc0")
+
+[node name="WallBot" type="Sprite2D" parent="colliders/WallBot/WallBot"]
+position = Vector2(509, -4)
+texture = ExtResource("18_5svc0")
+
+[node name="WallBot" type="Sprite2D" parent="colliders/WallBot/WallBot/WallBot"]
+position = Vector2(508, -1)
+texture = ExtResource("18_5svc0")
+
+[node name="WallBot" type="Sprite2D" parent="colliders/WallBot/WallBot/WallBot/WallBot"]
+position = Vector2(502, 0)
+texture = ExtResource("18_5svc0")
+
+[node name="WallBot" type="Sprite2D" parent="colliders/WallBot/WallBot/WallBot/WallBot/WallBot"]
+position = Vector2(-2539, 7)
+texture = ExtResource("18_5svc0")
+
+[node name="WallBot" type="Sprite2D" parent="colliders/WallBot/WallBot/WallBot/WallBot/WallBot/WallBot"]
+position = Vector2(-511, 3)
+texture = ExtResource("18_5svc0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colliders"]
+position = Vector2(-2312.24, 476.909)
+rotation = 0.305383
+shape = SubResource("RectangleShape2D_joe0i")
+debug_color = Color(0, 0.6, 0.701961, 0.0862745)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="colliders"]
+position = Vector2(145.75, 944.5)
+shape = SubResource("RectangleShape2D_cwvet")
+debug_color = Color(0, 0.584314, 0.776471, 0.0588235)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="colliders"]
+position = Vector2(1781.75, 427.5)
+rotation = -0.351744
+shape = SubResource("RectangleShape2D_jy0y8")
+debug_color = Color(0, 0.584314, 0.776471, 0.0823529)
+
+[node name="Window" type="Sprite2D" parent="colliders"]
+position = Vector2(-1801.25, -207.5)
+texture = ExtResource("19_6x76r")
+script = ExtResource("20_vlofx")
+
+[node name="rain" type="Node2D" parent="colliders/Window"]
+z_index = -1
+
+[node name="Window2" type="Sprite2D" parent="colliders"]
+position = Vector2(626.75, -255.5)
+texture = ExtResource("19_6x76r")
+script = ExtResource("20_vlofx")
+
+[node name="rain" type="Node2D" parent="colliders/Window2"]
+z_index = -1
+
+[node name="Window3" type="Sprite2D" parent="colliders"]
+position = Vector2(-971.25, -338.5)
+texture = ExtResource("19_6x76r")
+script = ExtResource("20_vlofx")
+
+[node name="rain" type="Node2D" parent="colliders/Window3"]
+z_index = -1
+
+[node name="Cam" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(1489, 390)
+zoom = Vector2(0.765, 0.765)
+script = ExtResource("3_jwcsi")
+target = NodePath("../Player/Image/view_target")
+
+[node name="Rose" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
+position = Vector2(1285, 508)
+scale = Vector2(0.507858, 0.507858)
+texture = ExtResource("7_tptl2")
+script = ExtResource("7_dmddh")
+identifier = "rose"
+override_root = NodePath(".")
+
+[node name="Area2D3" type="Area2D" parent="Rose"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rose/Area2D3"]
+shape = SubResource("CircleShape2D_b4qbx")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Skull" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
+z_index = 658
+position = Vector2(-268, 656)
+rotation = -0.991567
+scale = Vector2(0.507857, 0.507857)
+texture = ExtResource("8_qlu2j")
+script = ExtResource("11_1iciv")
+identifier = "skull"
+override_root = NodePath(".")
+enabled = null
+
+[node name="Area2D" type="Area2D" parent="Skull"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skull/Area2D"]
+shape = SubResource("CircleShape2D_2tu35")
+
+[node name="Shelf" type="Sprite2D" parent="."]
+position = Vector2(24.9999, 95)
+scale = Vector2(0.507857, 0.507857)
+texture = ExtResource("4_knyru")
+
+[node name="slot_start" type="Node2D" parent="Shelf"]
+position = Vector2(-200.844, -39.3812)
+scale = Vector2(1.96906, 1.96906)
+
+[node name="slot" type="Node2D" parent="Shelf/slot_start"]
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="Diamond" type="Sprite2D" parent="Shelf/slot_start/slot" node_paths=PackedStringArray("override_root")]
+scale = Vector2(0.507857, 0.507857)
+texture = ExtResource("5_sq7oy")
+offset = Vector2(0, -27.5668)
+script = ExtResource("11_1iciv")
+identifier = "diamond"
+override_root = NodePath(".")
+enabled = null
+
+[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot/Diamond"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot/Diamond/Area2D"]
+shape = SubResource("CircleShape2D_w8t0h")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="slot2" type="Node2D" parent="Shelf/slot_start"]
+position = Vector2(58.0001, -0.999984)
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot2/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="Egg" type="Sprite2D" parent="Shelf/slot_start/slot2" node_paths=PackedStringArray("override_root")]
+position = Vector2(-8.00008, -2.28882e-05)
+scale = Vector2(0.507857, 0.507857)
+texture = ExtResource("6_b841b")
+offset = Vector2(-0.578053, -22.6498)
+script = ExtResource("11_1iciv")
+identifier = "egg"
+override_root = NodePath(".")
+enabled = null
+
+[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot2/Egg"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot2/Egg/Area2D"]
+shape = SubResource("CircleShape2D_vl36s")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="slot3" type="Node2D" parent="Shelf/slot_start"]
+position = Vector2(122, 1.52588e-05)
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot3/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="slot4" type="Node2D" parent="Shelf/slot_start"]
+position = Vector2(197, 2.00001)
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/slot_start/slot4/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="Shelf2" type="Sprite2D" parent="."]
+position = Vector2(428, 148)
+scale = Vector2(0.507857, 0.507857)
+texture = ExtResource("4_knyru")
+
+[node name="slot_start" type="Node2D" parent="Shelf2"]
+position = Vector2(-200.844, -39.3812)
+scale = Vector2(1.96906, 1.96906)
+
+[node name="slot" type="Node2D" parent="Shelf2/slot_start"]
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf2/slot_start/slot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf2/slot_start/slot/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="slot2" type="Node2D" parent="Shelf2/slot_start"]
+position = Vector2(58.0001, -0.999984)
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf2/slot_start/slot2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf2/slot_start/slot2/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="slot3" type="Node2D" parent="Shelf2/slot_start"]
+position = Vector2(122, 1.52588e-05)
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf2/slot_start/slot3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf2/slot_start/slot3/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="slot4" type="Node2D" parent="Shelf2/slot_start"]
+position = Vector2(197, 2.00001)
+script = ExtResource("12_jte48")
+
+[node name="Area2D" type="Area2D" parent="Shelf2/slot_start/slot4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf2/slot_start/slot4/Area2D"]
+shape = SubResource("CircleShape2D_0omr5")
+debug_color = Color(0.513726, 0.576471, 0, 0)
+
+[node name="Hexagram" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(632, 642)
+texture = ExtResource("9_8xp8d")
+offset = Vector2(-11, 72)
+script = ExtResource("12_ogqdc")
+
+[node name="slots" type="Node2D" parent="Hexagram"]
+position = Vector2(5.5, 54.5)
+
+[node name="Node2D" type="Node2D" parent="Hexagram/slots"]
+position = Vector2(-259, -62)
+script = ExtResource("13_812fv")
+
+[node name="Area2D" type="Area2D" parent="Hexagram/slots/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/slots/Node2D/Area2D"]
+shape = SubResource("CircleShape2D_smx12")
+
+[node name="Node2D2" type="Node2D" parent="Hexagram/slots"]
+position = Vector2(306, -60)
+script = ExtResource("13_812fv")
+
+[node name="Area2D2" type="Area2D" parent="Hexagram/slots/Node2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/slots/Node2D2/Area2D2"]
+shape = SubResource("CircleShape2D_smx12")
+
+[node name="Node2D3" type="Node2D" parent="Hexagram/slots"]
+position = Vector2(-40, 79)
+script = ExtResource("13_812fv")
+
+[node name="Area2D3" type="Area2D" parent="Hexagram/slots/Node2D3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/slots/Node2D3/Area2D3"]
+shape = SubResource("CircleShape2D_smx12")
+
+[node name="Node2D4" type="Node2D" parent="Hexagram/slots"]
+position = Vector2(42, -85)
+script = ExtResource("13_812fv")
+
+[node name="Area2D4" type="Area2D" parent="Hexagram/slots/Node2D4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/slots/Node2D4/Area2D4"]
+shape = SubResource("CircleShape2D_smx12")
+
+[node name="Node2D5" type="Node2D" parent="Hexagram/slots"]
+position = Vector2(-344, 45)
+script = ExtResource("13_812fv")
+
+[node name="Area2D5" type="Area2D" parent="Hexagram/slots/Node2D5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/slots/Node2D5/Area2D5"]
+shape = SubResource("CircleShape2D_smx12")
+
+[node name="Node2D6" type="Node2D" parent="Hexagram/slots"]
+position = Vector2(379, 25)
+script = ExtResource("13_812fv")
+
+[node name="Area2D6" type="Area2D" parent="Hexagram/slots/Node2D6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/slots/Node2D6/Area2D6"]
+shape = SubResource("CircleShape2D_smx12")
+
+[node name="Fire" type="Sprite2D" parent="Hexagram"]
+visible = false
+position = Vector2(11.5, 37.5)
+texture = ExtResource("9_bvc3j")
+script = ExtResource("10_xvtus")
+
+[node name="center" type="Node2D" parent="Hexagram"]
+position = Vector2(-6, 78)
+rotation = 1.57079
+script = ExtResource("19_wa0v2")
+
+[node name="hexaArea2D" type="Area2D" parent="Hexagram/center"]
+position = Vector2(45.5001, -4.49969)
+rotation = -1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hexagram/center/hexaArea2D"]
+position = Vector2(2.5, -114.5)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_tbkse")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hexagram"]
+libraries = {
+"": SubResource("AnimationLibrary_oxlpp")
+}
+
+[node name="Cauldron" type="Sprite2D" parent="."]
+position = Vector2(1240, 299)
+texture = ExtResource("13_8ap6m")
+script = ExtResource("20_1htyl")
+
+[node name="Area2D" type="Area2D" parent="Cauldron"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/Area2D"]
+position = Vector2(15, -65)
+shape = SubResource("CircleShape2D_lu742")
+debug_color = Color(0.66093, 0.514182, 0, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cauldron"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_duckb")
+}
+
+[node name="book_trigger" type="Node2D" parent="." node_paths=PackedStringArray("override_root")]
+position = Vector2(-728, 123)
+script = ExtResource("24_ufxqs")
+override_root = NodePath(".")
+
+[node name="Area2D2" type="Area2D" parent="book_trigger"]
+position = Vector2(85, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="book_trigger/Area2D2"]
+position = Vector2(-11, -54)
+shape = SubResource("CircleShape2D_yxk40")
+
+[node name="cam_target" type="Node2D" parent="book_trigger"]
+position = Vector2(-324, 405)
+
+[node name="items" type="Node2D" parent="book_trigger/cam_target"]
+position = Vector2(-225, -54)
+
+[node name="reagents" type="Node2D" parent="book_trigger/cam_target"]
+position = Vector2(239, -54)
+
+[node name="result" type="Node2D" parent="book_trigger/cam_target"]
+position = Vector2(-3, 182)
+
+[node name="Book" type="Sprite2D" parent="."]
+z_index = 251
+position = Vector2(-756, 356)
+texture = ExtResource("14_wywgl")
+offset = Vector2(-1, -119)
+script = ExtResource("13_wcr8x")
+
+[node name="Area2D" type="Area2D" parent="Book"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Book/Area2D"]
+position = Vector2(-106.5, -45.5)
+shape = SubResource("RectangleShape2D_t5r0t")
+
+[node name="LaddleHandle" type="Node2D" parent="." node_paths=PackedStringArray("cauldron")]
+position = Vector2(1536, 63)
+script = ExtResource("23_873je")
+cauldron = NodePath("../Cauldron")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LaddleHandle"]
+root_node = NodePath("../Handle/Laddle")
+libraries = {
+"": SubResource("AnimationLibrary_v0ytq")
+}
+
+[node name="Handle" type="Sprite2D" parent="LaddleHandle"]
+position = Vector2(-2, 60)
+texture = ExtResource("13_6xin2")
+
+[node name="Laddle" type="Sprite2D" parent="LaddleHandle/Handle"]
+position = Vector2(-70, 37)
+texture = ExtResource("14_i8785")
+
+[node name="Area2D" type="Area2D" parent="LaddleHandle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaddleHandle/Area2D"]
+position = Vector2(-4, 2)
+shape = SubResource("CircleShape2D_uog5s")
+
+[node name="Player" parent="." instance=ExtResource("1_1dr8h")]
+position = Vector2(-154, 525)
+
+[node name="view_target" type="Node2D" parent="Player/Image" index="0"]
+position = Vector2(87, -212)
+
+[node name="controller" type="Node2D" parent="Player" node_paths=PackedStringArray("pawn")]
+rotation = 0.00201594
+script = ExtResource("2_kbiok")
+pawn = NodePath("..")
+speed = 1200.0
+
+[node name="Roses" type="Sprite2D" parent="."]
+position = Vector2(-1302, 92)
+texture = ExtResource("19_jgnva")
+
+[node name="Bottle" parent="." instance=ExtResource("29_opi3t")]
+position = Vector2(940, 370)
+ingredients = Array[String](["rose"])
+
+[node name="Chikin" parent="." instance=ExtResource("31_1tu66")]
+position = Vector2(764, 702)
+
+[connection signal="body_entered" from="Book/Area2D" to="Book" method="on_enter_smth"]
+[connection signal="body_exited" from="Book/Area2D" to="Book" method="on_exit_smth"]
+
+[editable path="Player"]
