@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=62 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -223,6 +223,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uog5s"]
 radius = 100.125
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbwaw"]
+size = Vector2(303.5, 54)
 
 [node name="Simulation" type="Node2D"]
 y_sort_enabled = true
@@ -655,6 +658,13 @@ position = Vector2(-1302, 92)
 texture = ExtResource("19_jgnva")
 script = ExtResource("32_q3uk5")
 override_root = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="Roses"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roses/Area2D"]
+position = Vector2(-3.75, 98)
+shape = SubResource("RectangleShape2D_jbwaw")
+debug_color = Color(0.792157, 0.415686, 0.282353, 0)
 
 [node name="Chikin" parent="." instance=ExtResource("31_1tu66")]
 position = Vector2(764, 702)
