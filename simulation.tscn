@@ -413,7 +413,6 @@ texture = ExtResource("8_qlu2j")
 script = ExtResource("11_1iciv")
 identifier = "skull"
 override_root = NodePath(".")
-enabled = null
 
 [node name="Area2D" type="Area2D" parent="Skull"]
 
@@ -445,7 +444,6 @@ offset = Vector2(0, -27.5668)
 script = ExtResource("11_1iciv")
 identifier = "diamond"
 override_root = NodePath(".")
-enabled = null
 
 [node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot/Diamond"]
 
@@ -471,7 +469,6 @@ offset = Vector2(-0.578053, -22.6498)
 script = ExtResource("11_1iciv")
 identifier = "egg"
 override_root = NodePath(".")
-enabled = null
 
 [node name="Area2D" type="Area2D" parent="Shelf/slot_start/slot2/Egg"]
 
