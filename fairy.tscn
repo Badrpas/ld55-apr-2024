@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bty5a7sp7no32"]
+
+[ext_resource type="Texture2D" uid="uid://cbeinsl1m1716" path="res://assets/fairy.png" id="1_kj7e6"]
+
+[node name="Fairy" type="Node2D"]
+
+[node name="Fairy" type="Sprite2D" parent="."]
+position = Vector2(1, -23)
+scale = Vector2(0.266602, 0.266602)
+texture = ExtResource("1_kj7e6")

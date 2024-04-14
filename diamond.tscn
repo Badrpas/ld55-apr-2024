@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://13607iicf8wr"]
+
+[ext_resource type="Texture2D" uid="uid://bgl5s8jdcmgt6" path="res://assets/ehh/static/shelfG/diamond.png" id="1_fe0bd"]
+[ext_resource type="Script" path="res://src/Item.gd" id="2_w2c5x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8t0h"]
+radius = 78.9837
+
+[node name="Diamond" type="Sprite2D" node_paths=PackedStringArray("override_root")]
+scale = Vector2(0.507857, 0.507857)
+texture = ExtResource("1_fe0bd")
+offset = Vector2(0, -27.5668)
+script = ExtResource("2_w2c5x")
+identifier = "diamond"
+override_root = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_w8t0h")
+debug_color = Color(0, 0.6, 0.701961, 0)

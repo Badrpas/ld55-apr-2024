@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://byost4sfw2ibl"]
+
+[ext_resource type="Script" path="res://src/Item.gd" id="1_esxs6"]
+[ext_resource type="Texture2D" uid="uid://e3mx18lg26rr" path="res://assets/tooth.png" id="2_cpacb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_han3m"]
+radius = 49.0102
+
+[node name="Tooth" type="Node2D" node_paths=PackedStringArray("override_root")]
+script = ExtResource("1_esxs6")
+identifier = "tooth"
+override_root = NodePath(".")
+
+[node name="Tooth" type="Sprite2D" parent="."]
+position = Vector2(-1, -10)
+texture = ExtResource("2_cpacb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -10)
+shape = SubResource("CircleShape2D_han3m")
+debug_color = Color(0, 0.6, 0.701961, 0)
