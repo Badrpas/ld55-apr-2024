@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=61 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c44yoa7jpjbmr" path="res://assets/ehh/static/shelfG/shelf.png" id="4_knyru"]
 [ext_resource type="Texture2D" uid="uid://bgl5s8jdcmgt6" path="res://assets/ehh/static/shelfG/diamond.png" id="5_sq7oy"]
 [ext_resource type="Texture2D" uid="uid://bd8es286e1h4j" path="res://assets/ehh/static/shelfG/egg.png" id="6_b841b"]
+[ext_resource type="PackedScene" uid="uid://cg72qe6moinik" path="res://rose.tscn" id="6_hmbcr"]
 [ext_resource type="Script" path="res://src/Consumable.gd" id="7_dmddh"]
 [ext_resource type="Texture2D" uid="uid://q6ta2ebmjuc0" path="res://assets/ehh/static/shelfG/rose.png" id="7_tptl2"]
 [ext_resource type="Texture2D" uid="uid://bnwettpdxjai6" path="res://assets/ehh/static/shelfG/skull.png" id="8_qlu2j"]
@@ -746,6 +747,9 @@ ingredients = Array[String](["rose"])
 
 [node name="Chikin" parent="." instance=ExtResource("31_1tu66")]
 position = Vector2(764, 702)
+
+[node name="Rose2" parent="." instance=ExtResource("6_hmbcr")]
+position = Vector2(1495, 587)
 
 [connection signal="body_entered" from="Book/Area2D" to="Book" method="on_enter_smth"]
 [connection signal="body_exited" from="Book/Area2D" to="Book" method="on_exit_smth"]
