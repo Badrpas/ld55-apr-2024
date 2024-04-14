@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=60 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -29,6 +29,8 @@
 [ext_resource type="Script" path="res://src/Cauldron.gd" id="20_1htyl"]
 [ext_resource type="Script" path="res://src/Window.gd" id="20_vlofx"]
 [ext_resource type="Script" path="res://src/LaddleHandle.gd" id="23_873je"]
+[ext_resource type="Texture2D" uid="uid://c0htrha66vthu" path="res://assets/hexagon_hint.png" id="23_y74tx"]
+[ext_resource type="Texture2D" uid="uid://bish863gnegs2" path="res://assets/phial.png" id="24_7kaxt"]
 [ext_resource type="Script" path="res://src/book-trigger.gd" id="24_ufxqs"]
 [ext_resource type="PackedScene" uid="uid://c6ox37fqqp5e8" path="res://bottle.tscn" id="29_opi3t"]
 [ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="31_1tu66"]
@@ -664,7 +666,16 @@ position = Vector2(-11, -54)
 shape = SubResource("CircleShape2D_yxk40")
 
 [node name="cam_target" type="Node2D" parent="book_trigger"]
-position = Vector2(-324, 405)
+position = Vector2(-376, 533)
+
+[node name="HexagonHint" type="Sprite2D" parent="book_trigger/cam_target"]
+position = Vector2(-233, -8)
+texture = ExtResource("23_y74tx")
+
+[node name="Phial" type="Sprite2D" parent="book_trigger/cam_target"]
+z_index = 252
+position = Vector2(239, -36)
+texture = ExtResource("24_7kaxt")
 
 [node name="items" type="Node2D" parent="book_trigger/cam_target"]
 position = Vector2(-225, -54)
@@ -673,7 +684,7 @@ position = Vector2(-225, -54)
 position = Vector2(239, -54)
 
 [node name="result" type="Node2D" parent="book_trigger/cam_target"]
-position = Vector2(-3, 182)
+position = Vector2(-7, 230)
 
 [node name="Book" type="Sprite2D" parent="."]
 z_index = 251
