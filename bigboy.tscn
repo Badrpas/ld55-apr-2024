@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://b5kol2sgnxx6y"]
+[gd_scene load_steps=3 format=3 uid="uid://b5kol2sgnxx6y"]
+
+[ext_resource type="Script" path="res://src/bigboy.gd" id="1_7he40"]
+[ext_resource type="Texture2D" uid="uid://dfe5k5xefe36g" path="res://assets/bigboy.png" id="1_yrr5w"]
 
 [node name="Bigboy" type="Node2D"]
+script = ExtResource("1_7he40")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-18, -179)
+texture = ExtResource("1_yrr5w")

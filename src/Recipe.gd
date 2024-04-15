@@ -12,6 +12,7 @@ static var ID_TO_IMG = {
 	'tooth': preload('res://assets/tooth.png'),
 	'dust': preload('res://assets/dust.png'),
 	'fairy': preload('res://assets/fairy.png'),
+	'bigboy': preload('res://assets/bigboy.png'),
 }
 
 var result: PackedScene
@@ -37,6 +38,13 @@ static func GetList() -> Array[Recipe]:
     arr.append(r)
 
     r = Recipe.new()
+    r.result = load('res://fairy.tscn')
+    r.result_id = 'fairy'
+    r.items.append_array(['feather', 'tooth']);
+    r.catalyst.append_array(['rose', 'rose'])
+    arr.append(r)
+    
+    r = Recipe.new()
     r.result = load('res://theeyer.tscn')
     r.result_id = 'eyer'
     r.items.append_array(['eye', 'skull', 'feather']);
@@ -44,16 +52,9 @@ static func GetList() -> Array[Recipe]:
     arr.append(r)
 
     r = Recipe.new()
-    r.result = load('res://fairy.tscn')
-    r.result_id = 'fairy'
-    r.items.append_array(['feather', 'tooth']);
-    r.catalyst.append_array(['rose'])
-    arr.append(r)
-    
-    r = Recipe.new()
     r.result = load('res://bigboy.tscn')
-    r.result_id = 'eyer'
-    r.items.append_array(['diamond', 'eye', 'skull', 'diamond', 'rose']);
+    r.result_id = 'bigboy'
+    r.items.append_array(['diamond', 'eye', 'skull', 'diamond', 'rose', 'egg']);
     r.catalyst.append_array(['feather', 'dust'])
     arr.append(r)
     

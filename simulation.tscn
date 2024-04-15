@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=69 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -6,9 +6,6 @@
 [ext_resource type="Script" path="res://src/CameraController.gd" id="3_jwcsi"]
 [ext_resource type="Texture2D" uid="uid://c44yoa7jpjbmr" path="res://assets/ehh/static/shelfG/shelf.png" id="4_knyru"]
 [ext_resource type="Texture2D" uid="uid://bd8es286e1h4j" path="res://assets/ehh/static/shelfG/egg.png" id="6_b841b"]
-[ext_resource type="PackedScene" uid="uid://cg72qe6moinik" path="res://rose.tscn" id="6_hmbcr"]
-[ext_resource type="Script" path="res://src/Consumable.gd" id="7_dmddh"]
-[ext_resource type="Texture2D" uid="uid://q6ta2ebmjuc0" path="res://assets/ehh/static/shelfG/rose.png" id="7_tptl2"]
 [ext_resource type="Texture2D" uid="uid://dppo4qd2r30q7" path="res://assets/ehh/hexagram/Hexagram.png" id="9_8xp8d"]
 [ext_resource type="Texture2D" uid="uid://dcbj04rnnmnrk" path="res://assets/ehh/hexagram/fire.png" id="9_bvc3j"]
 [ext_resource type="Script" path="res://src/Fire.gd" id="10_xvtus"]
@@ -34,7 +31,6 @@
 [ext_resource type="Script" path="res://src/book-trigger.gd" id="24_ufxqs"]
 [ext_resource type="Script" path="res://src/Roses.gd" id="32_q3uk5"]
 [ext_resource type="PackedScene" uid="uid://cmicflpi76s2g" path="res://skull.tscn" id="36_mdrnu"]
-[ext_resource type="PackedScene" uid="uid://5hl54aws322s" path="res://theeyer.tscn" id="36_n5ts7"]
 [ext_resource type="Script" path="res://src/walk_area.gd" id="37_brcjq"]
 [ext_resource type="Texture2D" uid="uid://3kdrfiot6pn5" path="res://assets/shield.png" id="37_qqkl2"]
 [ext_resource type="Texture2D" uid="uid://b77hswfnu30tn" path="res://assets/ehh/static/swords?.png" id="38_lug38"]
@@ -56,9 +52,6 @@ size = Vector2(282.318, 783.304)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy0y8"]
 size = Vector2(291, 861.562)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b4qbx"]
-radius = 85.4898
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vl36s"]
 radius = 91.6195
@@ -491,20 +484,6 @@ zoom = Vector2(0.765, 0.765)
 script = ExtResource("3_jwcsi")
 target = NodePath("../Player/Image/view_target")
 
-[node name="Rose" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
-position = Vector2(1285, 508)
-scale = Vector2(0.507858, 0.507858)
-texture = ExtResource("7_tptl2")
-script = ExtResource("7_dmddh")
-identifier = "rose"
-override_root = NodePath(".")
-
-[node name="Area2D3" type="Area2D" parent="Rose"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rose/Area2D3"]
-shape = SubResource("CircleShape2D_b4qbx")
-debug_color = Color(0, 0.6, 0.701961, 0)
-
 [node name="Egg" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
 position = Vector2(2027, 802)
 scale = Vector2(0.507858, 0.507858)
@@ -826,9 +805,6 @@ position = Vector2(-3.75, 98)
 shape = SubResource("RectangleShape2D_jbwaw")
 debug_color = Color(0.792157, 0.415686, 0.282353, 0)
 
-[node name="Rose2" parent="." instance=ExtResource("6_hmbcr")]
-position = Vector2(1495, 587)
-
 [node name="Skull2" parent="." instance=ExtResource("36_mdrnu")]
 position = Vector2(-342, 656)
 rotation = -1.2374
@@ -843,9 +819,6 @@ shape = SubResource("RectangleShape2D_go535")
 debug_color = Color(0.960784, 0.196078, 0, 0)
 
 [node name="Bottle" type="Node2D" parent="."]
-
-[node name="Theeyer" parent="." instance=ExtResource("36_n5ts7")]
-position = Vector2(848, 410)
 
 [node name="Shield" type="Sprite2D" parent="."]
 position = Vector2(276.355, -163.561)
@@ -891,6 +864,9 @@ position = Vector2(1695, 566)
 position = Vector2(-200, 628)
 scale = Vector2(0.755859, 0.755859)
 texture = ExtResource("40_80d32")
+
+[node name="FairySpot" type="Node2D" parent="."]
+position = Vector2(-353, 78)
 
 [connection signal="area_entered" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Cauldron/Area2D" to="Cauldron" method="on_exited"]

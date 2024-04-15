@@ -22,7 +22,7 @@ func _ready():
 	shield = $"../Shield"
 	assert(spot and sword1 and sword2 and shield)
 
-var speed = 70
+var speed = 120
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
