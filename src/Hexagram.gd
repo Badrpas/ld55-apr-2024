@@ -21,8 +21,11 @@ func _summon():
     var target_recipe: Recipe
     for recipe in Recipes:
         var cata_ok = true
+        var ingrs = []
+        ingrs.append_array(ingredients)
         for reagent in recipe.catalyst:
-            if not ingredients.has(reagent): cata_ok = false; print('checking ', recipe.result_id, " didn't find cata ", reagent); break
+            if not ingrs.has(reagent): cata_ok = false; print('checking ', recipe.result_id, " didn't find cata ", reagent); break
+            ingrs.remove_at(ingrs.find(reagent))
         if not cata_ok: continue;
 
         var slotted_items = []

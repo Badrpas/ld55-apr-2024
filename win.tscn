@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cfsewus5cglnl"]
+
+[node name="Win" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 543.0
+offset_top = 314.0
+offset_right = 657.0
+offset_bottom = 337.0
+text = "You've done it!"

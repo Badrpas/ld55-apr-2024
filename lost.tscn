@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cc6aylj76d55e"]
+
+[node name="Lost" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 568.0
+offset_top = 306.0
+offset_right = 608.0
+offset_bottom = 355.0
+text = "End"

@@ -76,6 +76,9 @@ func _process(_delta):
 		r.interact(player)
 	update_hovered()
 
+	if interaction_marker.visible:
+		interaction_marker.position = current_target.global_position + Vector2(0, -70)
+
 		
 
 func update_hovered():
