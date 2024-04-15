@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=71 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -36,9 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://3kdrfiot6pn5" path="res://assets/shield.png" id="37_qqkl2"]
 [ext_resource type="Texture2D" uid="uid://b77hswfnu30tn" path="res://assets/ehh/static/swords?.png" id="38_lug38"]
 [ext_resource type="Script" path="res://src/Sword1.gd" id="39_bptm0"]
-[ext_resource type="Texture2D" uid="uid://btkyaauihl48i" path="res://assets/door.png" id="39_g2gfs"]
 [ext_resource type="Texture2D" uid="uid://c020xxjrjdf0p" path="res://assets/troop.png" id="40_80d32"]
-[ext_resource type="Script" path="res://src/Door.gd" id="40_snatt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
 size = Vector2(5741, 287)
@@ -392,9 +390,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iafb"]
 size = Vector2(128.077, 236.288)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pe7h"]
-size = Vector2(463.688, 427.374)
 
 [node name="Simulation" type="Node2D"]
 y_sort_enabled = true
@@ -882,23 +877,6 @@ texture = ExtResource("40_80d32")
 
 [node name="FairySpot" type="Node2D" parent="."]
 position = Vector2(-353, 78)
-
-[node name="Door" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
-visible = false
-z_index = 840
-position = Vector2(1843, 71)
-scale = Vector2(0.644531, 0.697266)
-texture = ExtResource("39_g2gfs")
-offset = Vector2(1.55151, 130.51)
-script = ExtResource("40_snatt")
-override_root = NodePath(".")
-enabled = false
-
-[node name="Area2D" type="Area2D" parent="Door"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
-position = Vector2(1.55149, 111.866)
-shape = SubResource("RectangleShape2D_0pe7h")
 
 [connection signal="area_entered" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Cauldron/Area2D" to="Cauldron" method="on_exited"]
