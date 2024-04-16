@@ -48,16 +48,23 @@ func _summon():
 
     print('foun recipe ', target_recipe)
 
-    # fire.visible = not not target_recipe
-    # fire.visible = false
-    if not target_recipe: return
-    
-    var summoned = target_recipe.result.instantiate()
-    get_tree().root.get_node('Simulation').add_child(summoned)
-    summoned.position = center.global_position
+    if target_recipe: 
+        var summoned = target_recipe.result.instantiate()
+        get_tree().root.get_node('Simulation').add_child(summoned)
+        summoned.position = center.global_position
+        match target_recipe.sound:
+            "low": $AudioSpawn.stream = snd_low
+            "high": $AudioSpawn.stream = snd_high
+            _:
+                $AudioSpawn.stream = snd_low
+    else:
+        $AudioSpawn.stream = snd_beep
+    $AudioSpawn.play()
 
 
-
+var snd_beep = preload('res://assets/sound/beep.wav')
+var snd_low  = preload('res://assets/sound/hexa-low.wav')
+var snd_high = preload('res://assets/sound/hexa-high.wav')
 
 
 

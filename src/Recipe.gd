@@ -19,6 +19,7 @@ var result: PackedScene
 var result_id: String
 var items: Array[String] = []
 var catalyst: Array[String] = []
+var sound: String = 'low'
 
 static func GetList() -> Array[Recipe]:
     var arr: Array[Recipe] = []
@@ -26,6 +27,7 @@ static func GetList() -> Array[Recipe]:
     var r = Recipe.new()
     r.result = load('res://chikin.tscn')
     r.result_id = 'chicken'
+    r.sound = 'high'
     r.items.push_back('egg');
     r.catalyst.append_array(['rose'])
     arr.append(r)
@@ -33,6 +35,7 @@ static func GetList() -> Array[Recipe]:
     r = Recipe.new()
     r.result = load('res://eye.tscn')
     r.result_id = 'eye'
+    r.sound = 'high'
     r.items.append_array(['diamond', 'skull']);
     r.catalyst.append_array(['rose'])
     arr.append(r)
@@ -40,6 +43,7 @@ static func GetList() -> Array[Recipe]:
     r = Recipe.new()
     r.result = load('res://fairy.tscn')
     r.result_id = 'fairy'
+    r.sound = 'high'
     r.items.append_array(['feather', 'tooth']);
     r.catalyst.append_array(['rose', 'rose'])
     arr.append(r)
@@ -47,6 +51,7 @@ static func GetList() -> Array[Recipe]:
     r = Recipe.new()
     r.result = load('res://theeyer.tscn')
     r.result_id = 'eyer'
+    r.sound = 'low'
     r.items.append_array(['eye', 'skull', 'feather']);
     r.catalyst.append_array(['rose', 'feather'])
     arr.append(r)
@@ -54,6 +59,7 @@ static func GetList() -> Array[Recipe]:
     r = Recipe.new()
     r.result = load('res://bigboy.tscn')
     r.result_id = 'bigboy'
+    r.sound = 'low'
     r.items.append_array(['diamond', 'eye', 'skull', 'diamond', 'rose', 'egg']);
     r.catalyst.append_array(['feather', 'dust'])
     arr.append(r)

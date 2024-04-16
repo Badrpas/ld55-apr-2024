@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
 [ext_resource type="Script" path="res://src/controller.gd" id="2_kbiok"]
+[ext_resource type="PackedScene" uid="uid://dx3uobw76gpx0" path="res://window.tscn" id="3_fw35b"]
 [ext_resource type="Script" path="res://src/CameraController.gd" id="3_jwcsi"]
 [ext_resource type="Texture2D" uid="uid://c44yoa7jpjbmr" path="res://assets/ehh/static/shelfG/shelf.png" id="4_knyru"]
 [ext_resource type="Texture2D" uid="uid://bd8es286e1h4j" path="res://assets/ehh/static/shelfG/egg.png" id="6_b841b"]
@@ -19,13 +20,12 @@
 [ext_resource type="Script" path="res://src/Book.gd" id="13_wcr8x"]
 [ext_resource type="Texture2D" uid="uid://bnsvdjdp7v2kd" path="res://assets/ehh/laddletable/laddle.png" id="14_i8785"]
 [ext_resource type="Texture2D" uid="uid://d2f8x67pc85qe" path="res://assets/ehh/Recipies/Book.png" id="14_wywgl"]
+[ext_resource type="AudioStream" uid="uid://be705vvtlxf8i" path="res://assets/sound/hexa-cast.wav" id="17_d5i58"]
 [ext_resource type="Texture2D" uid="uid://sewalgtbosok" path="res://assets/wall_bot.png" id="18_5svc0"]
-[ext_resource type="Texture2D" uid="uid://ba2fd7a2hhbog" path="res://assets/window.png" id="19_6x76r"]
 [ext_resource type="Texture2D" uid="uid://c5du42vaxji2p" path="res://assets/roses.png" id="19_jgnva"]
 [ext_resource type="AudioStream" uid="uid://lkrkxgtfa7o8" path="res://assets/sound/bottle-drop.wav" id="19_terb6"]
 [ext_resource type="Script" path="res://src/HexagramCenter.gd" id="19_wa0v2"]
 [ext_resource type="Script" path="res://src/Cauldron.gd" id="20_1htyl"]
-[ext_resource type="Script" path="res://src/Window.gd" id="20_vlofx"]
 [ext_resource type="Script" path="res://src/LaddleHandle.gd" id="23_873je"]
 [ext_resource type="Texture2D" uid="uid://c0htrha66vthu" path="res://assets/hexagon_hint.png" id="23_y74tx"]
 [ext_resource type="Texture2D" uid="uid://bish863gnegs2" path="res://assets/phial.png" id="24_7kaxt"]
@@ -87,7 +87,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1s63c"]
 resource_name = "flicker"
-length = 4.0
+length = 4.4805
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -115,6 +115,45 @@ tracks/1/keys = {
 "method": &"_summon"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0170869,
+"stream": ExtResource("17_d5i58")
+}, {
+"end_offset": 0.0304066,
+"start_offset": 0.0,
+"stream": ExtResource("17_d5i58")
+}, {
+"end_offset": 0.568249,
+"start_offset": 0.128401,
+"stream": ExtResource("17_d5i58")
+}, {
+"end_offset": 0.381461,
+"start_offset": 0.128401,
+"stream": ExtResource("17_d5i58")
+}, {
+"end_offset": 0.717588,
+"start_offset": 0.128401,
+"stream": ExtResource("17_d5i58")
+}, {
+"end_offset": 0.855575,
+"start_offset": 0.0370217,
+"stream": ExtResource("17_d5i58")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.031326,
+"stream": ExtResource("17_d5i58")
+}],
+"times": PackedFloat32Array(0.00644099, 0.95, 2, 2.25, 2.7, 2.95, 3.15)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oxlpp"]
 _data = {
@@ -175,7 +214,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yxk40"]
-radius = 33.2415
+radius = 74.2428
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5r0t"]
 size = Vector2(89, 59)
@@ -499,29 +538,14 @@ rotation = -0.351744
 shape = SubResource("RectangleShape2D_jy0y8")
 debug_color = Color(0, 0.584314, 0.776471, 0.0823529)
 
-[node name="Window" type="Sprite2D" parent="colliders"]
-position = Vector2(-1801.25, -207.5)
-texture = ExtResource("19_6x76r")
-script = ExtResource("20_vlofx")
+[node name="Window" parent="colliders" instance=ExtResource("3_fw35b")]
+position = Vector2(-1782.25, -165.5)
 
-[node name="rain" type="Node2D" parent="colliders/Window"]
-z_index = -1
+[node name="Window2" parent="colliders" instance=ExtResource("3_fw35b")]
+position = Vector2(-1014.25, -441.5)
 
-[node name="Window2" type="Sprite2D" parent="colliders"]
-position = Vector2(626.75, -255.5)
-texture = ExtResource("19_6x76r")
-script = ExtResource("20_vlofx")
-
-[node name="rain" type="Node2D" parent="colliders/Window2"]
-z_index = -1
-
-[node name="Window3" type="Sprite2D" parent="colliders"]
-position = Vector2(-971.25, -338.5)
-texture = ExtResource("19_6x76r")
-script = ExtResource("20_vlofx")
-
-[node name="rain" type="Node2D" parent="colliders/Window3"]
-z_index = -1
+[node name="Window3" parent="colliders" instance=ExtResource("3_fw35b")]
+position = Vector2(558.75, -224.5)
 
 [node name="Cam" type="Camera2D" parent="." node_paths=PackedStringArray("target") groups=["CAMERA"]]
 position = Vector2(1489, 390)
@@ -731,6 +755,10 @@ libraries = {
 "": SubResource("AnimationLibrary_oxlpp")
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Hexagram"]
+
+[node name="AudioSpawn" type="AudioStreamPlayer2D" parent="Hexagram"]
+
 [node name="Cauldron" type="Sprite2D" parent="." groups=["CAULDRON"]]
 position = Vector2(1240, 299)
 texture = ExtResource("13_8ap6m")
@@ -765,7 +793,7 @@ override_root = NodePath(".")
 position = Vector2(85, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="book_trigger/Area2D2"]
-position = Vector2(-11, -54)
+position = Vector2(23, -26)
 shape = SubResource("CircleShape2D_yxk40")
 
 [node name="cam_target" type="Node2D" parent="book_trigger"]
@@ -828,7 +856,7 @@ position = Vector2(-4, 2)
 shape = SubResource("CircleShape2D_uog5s")
 
 [node name="Player" parent="." instance=ExtResource("1_1dr8h")]
-position = Vector2(-154, 525)
+position = Vector2(1709, 419)
 
 [node name="view_target" type="Node2D" parent="Player/Image" index="0"]
 position = Vector2(87, -212)
