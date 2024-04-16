@@ -23,6 +23,7 @@ func laddle_callback():
 	anim.track_set_path(1, String(bottle.get_path()) + ':rotation')
 	anim.track_set_path(2, String(bottle.get_path()) + ':enabled')
 	aplayer.play('bottle_pop')
+	$AudioStreamPlayer2D.play()
 
 func get_interactable_root(): return self
 func interact(issuer):

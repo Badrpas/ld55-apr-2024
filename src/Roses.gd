@@ -8,9 +8,12 @@ func get_interactable_root():
 
 
 
+var snd = preload('res://assets/sound/click.wav')
 func interact(_issuer):
 	var s = S.instantiate();
 	get_tree().get_first_node_in_group("SIMULATION").add_child(s)
+	get_tree().get_first_node_in_group('INTERACT_AUDIO').stream = snd
+	get_tree().get_first_node_in_group('INTERACT_AUDIO').play()
 	s.position = self.global_position + Vector2(-100, 250)
 
 func is_interactable(_issuer):

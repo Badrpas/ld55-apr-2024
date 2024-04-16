@@ -68,11 +68,13 @@ func _find_interactable_in(t) -> Interactable:
 	return Interactable.FindInteractableIn(t)
 
 
-
+var snd = preload('res://assets/sound/take.wav')
 func _process(_delta):
 	if current_target and Input.is_action_just_pressed('UseE'):
 		var r = _find_interactable_in(current_target)
 		if not r: return
+		get_tree().get_first_node_in_group('INTERACT_AUDIO').stream = snd
+		get_tree().get_first_node_in_group('INTERACT_AUDIO').play()
 		r.interact(player)
 	update_hovered()
 

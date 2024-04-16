@@ -47,7 +47,7 @@ position = Vector2(-1126, 842)
 [node name="Fairy" parent="Simulation" instance=ExtResource("8_tescr")]
 position = Vector2(-356, 51)
 
-[node name="Theeyer" parent="Simulation" instance=ExtResource("3_5j8oh")]
+[node name="Theeyer2" parent="Simulation" instance=ExtResource("3_5j8oh")]
 position = Vector2(605, 547)
 
 [node name="nothing_should_be_after_this_node" type="Node" parent="."]

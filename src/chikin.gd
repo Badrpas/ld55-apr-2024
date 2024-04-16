@@ -60,6 +60,7 @@ func run_b(player: Player):
     target.y = randf_range(rect.position.y, rect.end.y)
 
 
+var snd = preload('res://assets/sound/click.wav')
 func shed(body):
     if not body is Player: return
     var existsing = get_tree().get_nodes_in_group("feathers")
@@ -68,4 +69,6 @@ func shed(body):
     var f = Feather.instantiate()
     get_tree().get_first_node_in_group("SIMULATION").add_child.call_deferred(f)
     f.position = global_position + Vector2.UP
+    get_tree().get_first_node_in_group('INTERACT_AUDIO').stream = snd
+    get_tree().get_first_node_in_group('INTERACT_AUDIO').play()
 

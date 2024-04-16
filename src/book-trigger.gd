@@ -34,6 +34,7 @@ func interact(issuer):
 	vtarget.visible = locked
 
 
+var snd = preload('res://assets/sound/take.wav')
 func _process(delta):
 	if not locked: return
 
@@ -41,10 +42,14 @@ func _process(delta):
 		idx += 1;
 		idx = idx % Hexagram.Recipes.size()
 		upd_recipes()
+		get_tree().get_first_node_in_group('INTERACT_AUDIO').stream = snd
+		get_tree().get_first_node_in_group('INTERACT_AUDIO').play()
 	if Input.is_action_just_pressed('left'):
 		idx -= 1 - Hexagram.Recipes.size();
 		idx = idx % Hexagram.Recipes.size()
 		upd_recipes()
+		get_tree().get_first_node_in_group('INTERACT_AUDIO').stream = snd
+		get_tree().get_first_node_in_group('INTERACT_AUDIO').play()
 
 func upd_recipes():
 	while items.get_child_count() > 0:

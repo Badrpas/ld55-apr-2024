@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5kol2sgnxx6y"]
+[gd_scene load_steps=5 format=3 uid="uid://b5kol2sgnxx6y"]
 
 [ext_resource type="Script" path="res://src/bigboy.gd" id="1_7he40"]
 [ext_resource type="Texture2D" uid="uid://dfe5k5xefe36g" path="res://assets/bigboy.png" id="1_yrr5w"]
+[ext_resource type="AudioStream" uid="uid://wbgjirfrgntx" path="res://assets/sound/bigboyattk.wav" id="3_a0sgd"]
+[ext_resource type="AudioStream" uid="uid://6qc5w1fgamtn" path="res://assets/sound/bigboy-idle.wav" id="4_wsjud"]
 
 [node name="Bigboy" type="Node2D"]
 script = ExtResource("1_7he40")
@@ -12,3 +14,11 @@ texture = ExtResource("1_yrr5w")
 
 [node name="maw" type="Node2D" parent="."]
 position = Vector2(-72, -198)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a0sgd")
+
+[node name="AudioStreamPlayerLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wsjud")
+volume_db = -12.789
+autoplay = true
