@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=76 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -26,6 +26,8 @@
 [ext_resource type="AudioStream" uid="uid://lkrkxgtfa7o8" path="res://assets/sound/bottle-drop.wav" id="19_terb6"]
 [ext_resource type="Script" path="res://src/HexagramCenter.gd" id="19_wa0v2"]
 [ext_resource type="Script" path="res://src/Cauldron.gd" id="20_1htyl"]
+[ext_resource type="AudioStream" uid="uid://bus8c74e2euy6" path="res://assets/sound/fire.mp3" id="20_yd3k6"]
+[ext_resource type="AudioStream" uid="uid://dbautayeumsjm" path="res://assets/sound/boiling.mp3" id="21_qrbax"]
 [ext_resource type="Script" path="res://src/LaddleHandle.gd" id="23_873je"]
 [ext_resource type="Texture2D" uid="uid://c0htrha66vthu" path="res://assets/hexagon_hint.png" id="23_y74tx"]
 [ext_resource type="Texture2D" uid="uid://bish863gnegs2" path="res://assets/phial.png" id="24_7kaxt"]
@@ -783,6 +785,16 @@ position = Vector2(20, -150)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Cauldron"]
 stream = ExtResource("19_terb6")
 max_distance = 3000.0
+
+[node name="AudioFire" type="AudioStreamPlayer2D" parent="Cauldron"]
+position = Vector2(-3, 85)
+stream = ExtResource("20_yd3k6")
+autoplay = true
+
+[node name="AudioBoiling" type="AudioStreamPlayer2D" parent="Cauldron"]
+position = Vector2(-3, 85)
+stream = ExtResource("21_qrbax")
+autoplay = true
 
 [node name="book_trigger" type="Node2D" parent="." node_paths=PackedStringArray("override_root")]
 position = Vector2(-728, 123)
