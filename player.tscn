@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6cr3w01ofst7"]
+[gd_scene load_steps=11 format=3 uid="uid://b6cr3w01ofst7"]
 
 [ext_resource type="Texture2D" uid="uid://d4ixnjylexkfr" path="res://assets/ehh/player.png" id="1_grwgx"]
 [ext_resource type="Script" path="res://src/Player.gd" id="1_orv62"]
@@ -11,6 +11,98 @@ radius = 115.278
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0ph4"]
 radius = 34.0
 height = 114.0
+
+[sub_resource type="Animation" id="Animation_bxxfu"]
+resource_name = "walk"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 6), Vector2(2, -19), Vector2(2, 6), Vector2(2, -19), Vector2(2, 6), Vector2(2, -19), Vector2(2, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.105279, 0.236596, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d701w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4xlv3"]
+resource_name = "walk_2"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 6), Vector2(2, -19), Vector2(2, 6), Vector2(2, -19), Vector2(2, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.236596, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a27dw"]
+_data = {
+"RESET": SubResource("Animation_d701w"),
+"walk": SubResource("Animation_bxxfu"),
+"walk_2": SubResource("Animation_4xlv3")
+}
 
 [node name="body" type="CharacterBody2D"]
 motion_mode = 1
@@ -44,6 +136,12 @@ script = ExtResource("2_cjskg")
 
 [node name="eventer" type="Node" parent="."]
 script = ExtResource("3_vierx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a27dw")
+}
+playback_default_blend_time = 0.1
 
 [connection signal="area_entered" from="Image/IteractionArea" to="eventer" method="add_potential_target"]
 [connection signal="area_exited" from="Image/IteractionArea" to="eventer" method="remove_potential_target"]

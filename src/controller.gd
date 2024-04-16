@@ -7,6 +7,10 @@ var velocity: Vector2
 
 var enabled = true
 
+var anim: AnimationPlayer
+func _ready():
+	anim = pawn.get_node('AnimationPlayer')
+
 func _physics_process(delta):
 	if not enabled: return
 	if not pawn: return
@@ -21,7 +25,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed('down'):
 		dy += 1;
 
-	if not (dx or dy): return
+	if not (dx or dy):
+		if anim.current_animation == 'walk_2':
+			anim.play('RESET', 0.5)
+		return
+
+	if not anim.is_playing() or anim.current_animation != 'walk_2':
+		anim.play('walk_2')
 
 	var dir = Vector2(dx, dy).normalized()
 	velocity = dir * (speed)
