@@ -28,15 +28,25 @@ func interact(issuer):
 		locked = true
 		upd_recipes()
 	else:
-		cam.target = last_target
-		issuer.get_node('controller').enabled = true
-		locked = false
+		pass
+		# cam.target = last_target
+		# issuer.get_node('controller').enabled = true
+		# locked = false
 	vtarget.visible = locked
 
+func unlock():
+	cam.target = last_target
+	Player.Instance.get_node('controller').enabled = true
+	locked = false
+	vtarget.visible = locked
 
 var snd = preload('res://assets/sound/take.wav')
-func _process(delta):
+func _process(_delta):
 	if not locked: return
+	if Input.is_action_just_pressed('UseE'):
+		unlock.call_deferred()
+		return
+		
 
 	if Input.is_action_just_pressed('right'):
 		idx += 1;

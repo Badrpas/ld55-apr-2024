@@ -34,7 +34,7 @@ func _ready():
 	tween.tween_callback(func(): audio_loop.play())
 	tween.tween_property($Sprite, 'position:y', +100, 0.8).set_trans(Tween.TRANS_SINE).as_relative()
 	tween.set_loops()
-	
+	StrikesHitNearSwords=0
 	spot = $"../TheYeyerSpot"
 	sword1 = $"../Sword1"
 	sword2 = $"../Sword2"
@@ -79,6 +79,8 @@ func strike():
 	strike_tween = create_tween()
 	strike_tween.tween_property(spr, 'position', Player.Instance.global_position, 0.3)
 	strike_tween.tween_callback(func(): 
+		if BookTrigger.Instance.locked: 
+			return
 		Player.Instance.get_node('controller').enabled = false
 		if Player.Instance.holder_slot.get_child(0) is Shield:
 			reflect_tween = create_tween()

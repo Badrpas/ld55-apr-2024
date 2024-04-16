@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=78 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://c020xxjrjdf0p" path="res://assets/troop.png" id="40_80d32"]
 [ext_resource type="AudioStream" uid="uid://b7vhm5ljur00s" path="res://assets/sound/click.wav" id="40_hxhgd"]
 [ext_resource type="Texture2D" uid="uid://btkyaauihl48i" path="res://assets/door.png" id="43_2pjwn"]
+[ext_resource type="PackedScene" uid="uid://4kgy6vm137e" path="res://key.tscn" id="45_36ofq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
 size = Vector2(5741, 287)
@@ -312,7 +313,85 @@ size = Vector2(303.5, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go535"]
 size = Vector2(3646, 530.5)
 
+[sub_resource type="Animation" id="Animation_5yi4v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(276.355, -163.561)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qpvvf"]
+resource_name = "drop"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.45, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(276.355, -163.561), Vector2(251, 262), Vector2(161, 231), Vector2(133, 262)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -1.53983]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_oj2er")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_oj2er")
+}],
+"times": PackedFloat32Array(0.3, 0.55)
+}
+tracks/2/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2e4hx"]
+_data = {
+"RESET": SubResource("Animation_5yi4v"),
+"drop": SubResource("Animation_qpvvf")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsnml"]
 size = Vector2(293.448, 396.432)
@@ -925,6 +1004,9 @@ position = Vector2(-506, -3006)
 
 [node name="InteractionAudio" type="AudioStreamPlayer" parent="." groups=["INTERACT_AUDIO"]]
 stream = ExtResource("40_hxhgd")
+
+[node name="Key" parent="." instance=ExtResource("45_36ofq")]
+position = Vector2(1712, 644)
 
 [connection signal="area_entered" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Cauldron/Area2D" to="Cauldron" method="on_exited"]
