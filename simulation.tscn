@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=77 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/CameraController.gd" id="3_jwcsi"]
 [ext_resource type="Texture2D" uid="uid://c44yoa7jpjbmr" path="res://assets/ehh/static/shelfG/shelf.png" id="4_knyru"]
 [ext_resource type="Texture2D" uid="uid://bd8es286e1h4j" path="res://assets/ehh/static/shelfG/egg.png" id="6_b841b"]
+[ext_resource type="Script" path="res://src/Door.gd" id="6_ubkfu"]
 [ext_resource type="Texture2D" uid="uid://dppo4qd2r30q7" path="res://assets/ehh/hexagram/Hexagram.png" id="9_8xp8d"]
 [ext_resource type="Texture2D" uid="uid://dcbj04rnnmnrk" path="res://assets/ehh/hexagram/fire.png" id="9_bvc3j"]
 [ext_resource type="Script" path="res://src/Fire.gd" id="10_xvtus"]
@@ -42,6 +43,7 @@
 [ext_resource type="Script" path="res://src/Sword1.gd" id="39_bptm0"]
 [ext_resource type="Texture2D" uid="uid://c020xxjrjdf0p" path="res://assets/troop.png" id="40_80d32"]
 [ext_resource type="AudioStream" uid="uid://b7vhm5ljur00s" path="res://assets/sound/click.wav" id="40_hxhgd"]
+[ext_resource type="Texture2D" uid="uid://btkyaauihl48i" path="res://assets/door.png" id="43_2pjwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
 size = Vector2(5741, 287)
@@ -58,6 +60,9 @@ size = Vector2(1398.39, 1136.74)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy0y8"]
 size = Vector2(1174.68, 1244.38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qw6sa"]
+size = Vector2(286, 210)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vl36s"]
 radius = 91.6195
@@ -216,7 +221,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yxk40"]
-radius = 74.2428
+radius = 53.7587
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5r0t"]
 size = Vector2(89, 59)
@@ -307,85 +312,7 @@ size = Vector2(303.5, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go535"]
 size = Vector2(3646, 530.5)
 
-[sub_resource type="Animation" id="Animation_5yi4v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(276.355, -163.561)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_qpvvf"]
-resource_name = "drop"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.45, 0.55),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(276.355, -163.561), Vector2(251, 262), Vector2(161, 231), Vector2(133, 262)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, -1.53983]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("36_oj2er")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("36_oj2er")
-}],
-"times": PackedFloat32Array(0.3, 0.55)
-}
-tracks/2/use_blend = true
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2e4hx"]
-_data = {
-"RESET": SubResource("Animation_5yi4v"),
-"drop": SubResource("Animation_qpvvf")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsnml"]
 size = Vector2(293.448, 396.432)
@@ -478,6 +405,7 @@ y_sort_enabled = true
 script = ExtResource("1_vo1iw")
 
 [node name="colliders" type="StaticBody2D" parent="."]
+z_index = -465
 y_sort_enabled = true
 position = Vector2(488.25, 130.5)
 
@@ -554,6 +482,19 @@ position = Vector2(1489, 390)
 zoom = Vector2(0.765, 0.765)
 script = ExtResource("3_jwcsi")
 target = NodePath("../Player/Image/view_target")
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(1847, -55)
+texture = ExtResource("43_2pjwn")
+offset = Vector2(-5, 166)
+script = ExtResource("6_ubkfu")
+enabled = null
+
+[node name="Area2D" type="Area2D" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
+position = Vector2(15, 144)
+shape = SubResource("RectangleShape2D_qw6sa")
 
 [node name="Egg" type="Sprite2D" parent="." node_paths=PackedStringArray("override_root")]
 position = Vector2(2027, 802)
@@ -809,7 +750,7 @@ override_root = NodePath(".")
 position = Vector2(85, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="book_trigger/Area2D2"]
-position = Vector2(23, -26)
+position = Vector2(52, -13)
 shape = SubResource("CircleShape2D_yxk40")
 
 [node name="cam_target" type="Node2D" parent="book_trigger"]
@@ -868,7 +809,7 @@ texture = ExtResource("14_i8785")
 [node name="Area2D" type="Area2D" parent="LaddleHandle"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaddleHandle/Area2D"]
-position = Vector2(-4, 2)
+position = Vector2(-10, 62)
 shape = SubResource("CircleShape2D_uog5s")
 
 [node name="Player" parent="." instance=ExtResource("1_1dr8h")]

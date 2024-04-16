@@ -12,7 +12,6 @@ func _ready():
 	anim = pawn.get_node('AnimationPlayer')
 
 func _physics_process(delta):
-	if not enabled: return
 	if not pawn: return
 	var dx = 0
 	var dy = 0
@@ -25,7 +24,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed('down'):
 		dy += 1;
 
-	if not (dx or dy):
+	if not (dx or dy) or not enabled:
 		if anim.current_animation == 'walk_2':
 			anim.play('RESET', 0.5)
 		return

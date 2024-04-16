@@ -1,18 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://4kgy6vm137e"]
 
 [ext_resource type="Texture2D" uid="uid://dy553bcggkn4x" path="res://assets/stone.png" id="1_ixywo"]
-[ext_resource type="Script" path="res://src/Item.gd" id="1_sdnfr"]
+[ext_resource type="Script" path="res://src/key.gd" id="1_pw5q0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1p13"]
 radius = 111.544
 
 [node name="Key" type="Node2D" node_paths=PackedStringArray("override_root")]
-script = ExtResource("1_sdnfr")
+rotation = -0.400291
+script = ExtResource("1_pw5q0")
 identifier = "key"
 override_root = NodePath(".")
 
 [node name="Stone" type="Sprite2D" parent="."]
-position = Vector2(1, -20)
+position = Vector2(4.88789, 6.41159)
+rotation = -0.222507
 texture = ExtResource("1_ixywo")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -22,3 +22,6 @@ stream = ExtResource("3_a0sgd")
 stream = ExtResource("4_wsjud")
 volume_db = -12.789
 autoplay = true
+
+[node name="loot_spot" type="Node2D" parent="."]
+position = Vector2(-227, -7)

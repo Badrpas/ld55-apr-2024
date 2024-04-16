@@ -16,6 +16,7 @@ func _ready():
 	idle_snd_tween.tween_callback(func(): $AudioStreamPlayerLoop.play())
 	idle_snd_tween.set_loops()
 	$AudioStreamPlayerLoop.volume_db = -12.789
+	z_index = position.y
 
 var prepare_sound_played = false
 var prepare_sound = preload('res://assets/sound/bigboy-prepare.wav')
@@ -42,6 +43,8 @@ var End = preload('res://lost.tscn')
 var attk_snd = preload('res://assets/sound/bigboyattk.wav')
 var reflect_snd = preload('res://assets/sound/reflect.wav')
 var dead_snd = preload('res://assets/sound/biboydead.wav')
+var click_snd = preload('res://assets/sound/click.wav')
+
 var Fireball = preload('res://assets/fireball.png')
 var strike_tween: Tween
 func strike():
@@ -70,7 +73,8 @@ func strike():
 			strike_tween = create_tween()
 			strike_tween.tween_property(spr, 'position', back, 0.5)
 			strike_tween.tween_callback(func(): 
-				idle_snd_tween.stop()
+				tween.kill()
+				idle_snd_tween.kill()
 				$AudioStreamPlayerLoop.stop()
 				$Sprite.texture = load('res://assets/bigboy_dead.png')
 				spr.queue_free();
@@ -80,12 +84,12 @@ func strike():
 			)
 			strike_tween.tween_interval(3)
 			strike_tween.tween_callback(func():
-				var root = get_tree().root
-				root.add_child(Win.instantiate())
-				var sim = get_tree().get_first_node_in_group("SIMULATION")
-				root.remove_child(sim)
-				sim.queue_free()
+				$AudioStreamPlayer.stream = click_snd
+				$AudioStreamPlayer.play()
+				$Sprite.texture = load('res://assets/bigboy_dead_open.png')
+				drop_loot()
 			)
+		
 		else:
 			spr.queue_free();
 			Player.Instance.get_node('controller').enabled = false
@@ -109,3 +113,16 @@ func strike():
 
 	);
 	strike_tween.set_loops(1)
+
+
+
+var TheKey: PackedScene = preload('res://key.tscn')
+
+var snd = preload('res://assets/sound/click.wav')
+func drop_loot():
+	var d = TheKey.instantiate()
+	get_tree().get_first_node_in_group("SIMULATION").add_child(d)
+	d.global_position = $loot_spot.global_position
+	get_tree().get_first_node_in_group('INTERACT_AUDIO').stream = snd
+	get_tree().get_first_node_in_group('INTERACT_AUDIO').play()
+
