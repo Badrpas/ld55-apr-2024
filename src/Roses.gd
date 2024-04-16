@@ -10,7 +10,7 @@ func get_interactable_root():
 
 func interact(_issuer):
 	var s = S.instantiate();
-	get_tree().root.get_node('Simulation').add_child(s)
+	get_tree().get_first_node_in_group("SIMULATION").add_child(s)
 	s.position = self.global_position + Vector2(-100, 250)
 
 func is_interactable(_issuer):

@@ -17,9 +17,9 @@ func interact(issuer):
     else:
         print('drop it?')
         var pos = self.global_position
-        var root = get_tree().root
+        var tree = get_tree()
         self.get_parent().remove_child(self)
-        root.get_node('Simulation').add_child(self)
+        tree.get_first_node_in_group("SIMULATION").add_child(self)
         self.global_position = pos
 
 func is_interactable(issuer):

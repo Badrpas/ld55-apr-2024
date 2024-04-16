@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var Feather: PackedScene = preload('res://feather.tscn')
-@onready var fire = get_tree().root.get_node('Simulation/Hexagram/Fire')
 @onready var walk_zone: CollisionShape2D = $'../walk_area/CollisionShape2D'
 @onready var target: Vector2 = position
 
@@ -11,7 +10,6 @@ var speed = 600
 var playa: Player
 
 func _ready():
-    assert(fire)
     $shedding_spot.connect('body_entered', shed)
 
 
@@ -68,6 +66,6 @@ func shed(body):
     if existsing.size() > 1:
         return
     var f = Feather.instantiate()
-    get_tree().root.get_node('Simulation').add_child.call_deferred(f)
+    get_tree().get_first_node_in_group("SIMULATION").add_child.call_deferred(f)
     f.position = global_position + Vector2.UP
 

@@ -10,6 +10,7 @@ func is_interactable(issuer):
 
 func interact(issuer):
     if not issuer is Player: print('not player ', issuer);return;
+    $AnimationPlayer.stop(true)
     if is_interactable(issuer):
         var holder = get_interactable_root()
         holder.get_parent().remove_child(holder)

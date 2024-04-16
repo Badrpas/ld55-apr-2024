@@ -12,5 +12,8 @@ func _process(_delta):
 
 func get_interactable_root(): return self
 	
-
+func interact(_from):
+	var ap: AnimationPlayer = get_tree().get_first_node_in_group('CAULDRON').get_node('AnimationPlayer')
+	ap.stop(true)
+	super(_from)
 

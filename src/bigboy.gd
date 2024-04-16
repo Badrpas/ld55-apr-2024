@@ -33,7 +33,7 @@ var strike_tween: Tween
 func strike():
 	var spr = Sprite2D.new()
 	spr.texture = Fireball
-	get_tree().root.get_node('Simulation').add_child(spr)
+	get_tree().get_first_node_in_group("SIMULATION").add_child(spr)
 	spr.global_position = $maw.global_position
 
 	var back = spr.global_position
@@ -47,7 +47,7 @@ func strike():
 	strike_tween.tween_property(spr, 'position', Player.Instance.global_position, 0.3)
 	strike_tween.tween_callback(func(): 
 		# Player.Instance.get_node('controller').enabled = false
-		get_tree().root.get_node('Simulation/Cam').add_stress(0.9)
+		get_tree().get_first_node_in_group("SIMULATION").get_node('Cam').add_stress(0.9)
 		if Player.Instance.holder_slot.get_child(0) is Shield:
 			print('relect and win')
 			strike_tween.stop()
@@ -62,7 +62,7 @@ func strike():
 			strike_tween.tween_callback(func():
 				var root = get_tree().root
 				root.add_child(Win.instantiate())
-				var sim = get_tree().root.get_node('Simulation')
+				var sim = get_tree().get_first_node_in_group("SIMULATION")
 				root.remove_child(sim)
 				sim.queue_free()
 			)
@@ -77,7 +77,7 @@ func strike():
 			strike_tween.tween_callback(func():
 				var root = get_tree().root
 				root.add_child(End.instantiate())
-				var sim = get_tree().root.get_node('Simulation')
+				var sim = get_tree().get_first_node_in_group("SIMULATION")
 				root.remove_child(sim)
 				sim.queue_free()
 			)

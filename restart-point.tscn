@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpel847y4eoof"]
+
+[ext_resource type="PackedScene" uid="uid://b0oydyhkh1k6n" path="res://simulation.tscn" id="1_6jg1p"]
+[ext_resource type="Script" path="res://src/restart-point.gd" id="1_prpy6"]
+[ext_resource type="PackedScene" uid="uid://5hl54aws322s" path="res://theeyer.tscn" id="3_5j8oh"]
+[ext_resource type="PackedScene" uid="uid://bgifncisv3ky8" path="res://eye.tscn" id="3_6ui23"]
+[ext_resource type="PackedScene" uid="uid://dbg7nbt676y7s" path="res://feather.tscn" id="4_3guj7"]
+[ext_resource type="PackedScene" uid="uid://cmicflpi76s2g" path="res://skull.tscn" id="4_4mhn2"]
+[ext_resource type="PackedScene" uid="uid://c40ynrs1svlj6" path="res://chikin.tscn" id="6_3g5a0"]
+[ext_resource type="PackedScene" uid="uid://bty5a7sp7no32" path="res://fairy.tscn" id="8_tescr"]
+
+[node name="RestartPoint" type="Node2D"]
+script = ExtResource("1_prpy6")
+
+[node name="Simulation" parent="." instance=ExtResource("1_6jg1p")]
+
+[node name="colliders" parent="Simulation" index="0"]
+z_index = -380
+
+[node name="Cam" parent="Simulation" index="1"]
+position = Vector2(277, -282)
+
+[node name="Egg" parent="Simulation" index="2"]
+position = Vector2(868, 291)
+rotation = -0.241087
+
+[node name="Feather" parent="Simulation/Shelf2/slot_start/slot3" index="0" instance=ExtResource("4_3guj7")]
+position = Vector2(5.99994, 2.99994)
+scale = Vector2(0.903965, 0.903965)
+
+[node name="Skull" parent="Simulation/Hexagram/slots/Node2D" index="0" instance=ExtResource("4_4mhn2")]
+position = Vector2(-0.499969, -6.50002)
+
+[node name="Feather2" parent="Simulation/Hexagram/slots/Node2D2" index="0" instance=ExtResource("4_3guj7")]
+position = Vector2(15.5, -12.5001)
+
+[node name="Eye" parent="Simulation/Hexagram/slots/Node2D5" index="0" instance=ExtResource("3_6ui23")]
+position = Vector2(-2.5, -4.5)
+
+[node name="Skull2" parent="Simulation" index="12"]
+visible = false
+position = Vector2(-643, 1474)
+
+[node name="Chikin" parent="Simulation" instance=ExtResource("6_3g5a0")]
+position = Vector2(-1126, 842)
+
+[node name="Fairy" parent="Simulation" instance=ExtResource("8_tescr")]
+position = Vector2(-356, 51)
+
+[node name="Theeyer" parent="Simulation" instance=ExtResource("3_5j8oh")]
+position = Vector2(605, 547)
+
+[node name="nothing_should_be_after_this_node" type="Node" parent="."]
+
+[editable path="Simulation"]
+[editable path="Simulation/Player"]

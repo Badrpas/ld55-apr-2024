@@ -391,7 +391,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iafb"]
 size = Vector2(128.077, 236.288)
 
-[node name="Simulation" type="Node2D"]
+[node name="Simulation" type="Node2D" groups=["SIMULATION"]]
 y_sort_enabled = true
 script = ExtResource("1_vo1iw")
 
@@ -482,7 +482,7 @@ script = ExtResource("20_vlofx")
 [node name="rain" type="Node2D" parent="colliders/Window3"]
 z_index = -1
 
-[node name="Cam" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Cam" type="Camera2D" parent="." node_paths=PackedStringArray("target") groups=["CAMERA"]]
 position = Vector2(1489, 390)
 zoom = Vector2(0.765, 0.765)
 script = ExtResource("3_jwcsi")
@@ -690,11 +690,10 @@ libraries = {
 "": SubResource("AnimationLibrary_oxlpp")
 }
 
-[node name="Cauldron" type="Sprite2D" parent="."]
+[node name="Cauldron" type="Sprite2D" parent="." groups=["CAULDRON"]]
 position = Vector2(1240, 299)
 texture = ExtResource("13_8ap6m")
 script = ExtResource("20_1htyl")
-enabled = null
 
 [node name="Area2D" type="Area2D" parent="Cauldron"]
 

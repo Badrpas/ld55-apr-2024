@@ -9,7 +9,7 @@ func _ready():
 	tween.tween_property($Sprite, 'position:y', -30, 0.4).set_trans(Tween.TRANS_SINE).as_relative()
 	tween.tween_property($Sprite, 'position:y', +30, 0.4).set_trans(Tween.TRANS_SINE).as_relative()
 	tween.set_loops()
-	spot = $"../FairySpot"
+	spot = get_tree().get_first_node_in_group("SIMULATION").get_node("FairySpot")
 
 
 var speed = 470

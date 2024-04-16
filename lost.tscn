@@ -1,10 +1,27 @@
-[gd_scene format=3 uid="uid://cc6aylj76d55e"]
+[gd_scene load_steps=2 format=3 uid="uid://cc6aylj76d55e"]
+
+[ext_resource type="Script" path="res://src/lost.gd" id="1_ugfs2"]
 
 [node name="Lost" type="Node2D"]
+script = ExtResource("1_ugfs2")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 568.0
-offset_top = 306.0
-offset_right = 608.0
-offset_bottom = 355.0
-text = "End"
+offset_left = 552.0
+offset_top = 319.0
+offset_right = 619.0
+offset_bottom = 368.0
+text = "The End."
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 555.0
+offset_top = 349.0
+offset_right = 614.0
+offset_bottom = 398.0
+text = "Or is it?"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 554.0
+offset_top = 381.0
+offset_right = 613.0
+offset_bottom = 430.0
+horizontal_alignment = 1

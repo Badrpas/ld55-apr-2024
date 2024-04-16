@@ -17,7 +17,7 @@ func laddle_callback():
 	bottle.position = self.global_position + Vector2(0, -50)
 	bottle.ingredients.append_array(ingredients)
 	ingredients.clear()
-	get_tree().root.get_node('Simulation').add_child(bottle)
+	get_tree().get_first_node_in_group("SIMULATION").add_child(bottle)
 	var anim: Animation = aplayer.get_animation('bottle_pop')
 	anim.track_set_path(0, String(bottle.get_path()) + ':position')
 	anim.track_set_path(1, String(bottle.get_path()) + ':rotation')

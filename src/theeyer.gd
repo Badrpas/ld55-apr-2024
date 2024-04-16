@@ -35,7 +35,7 @@ func _process(delta):
 	$Sprite.z_index = global_position.y + 150
 	time_to_strike -= delta
 	if time_to_strike <=0 and not BookTrigger.Instance.locked:
-		time_to_strike = 8 
+		time_to_strike = 6 
 		strike()
 
 static var StrikesHitNearSwords = 0
@@ -46,7 +46,7 @@ var strike_tween: Tween
 func strike():
 	var spr = Sprite2D.new()
 	spr.texture = Fireball
-	get_tree().root.get_node('Simulation').add_child(spr)
+	get_tree().get_first_node_in_group("SIMULATION").add_child(spr)
 	spr.global_position = global_position
 
 	var diff = Player.Instance.global_position - global_position
@@ -59,7 +59,7 @@ func strike():
 	strike_tween.tween_callback(func(): 
 		spr.queue_free();
 		Player.Instance.get_node('controller').enabled = false
-		get_tree().root.get_node('Simulation/Cam').add_stress(0.9)
+		get_tree().get_first_node_in_group("CAMERA").add_stress(0.9)
 
 		if TheYeyer.StrikesHitNearSwords == 0:
 			if sword1.global_position.distance_to(Player.Instance.global_position) < 1200:
@@ -86,8 +86,8 @@ var Tooth: PackedScene = preload('res://tooth.tscn')
 func drop_loot():
 	var d = Diamond.instantiate()
 	var t = Tooth.instantiate()
-	get_tree().root.get_node('Simulation').add_child(d)
-	get_tree().root.get_node('Simulation').add_child(t)
+	get_tree().get_first_node_in_group("SIMULATION").add_child(d)
+	get_tree().get_first_node_in_group("SIMULATION").add_child(t)
 	d.global_position = global_position + Vector2(58, 70)
 	t.global_position = global_position + Vector2(-10, 0)
 
