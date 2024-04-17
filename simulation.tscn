@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b0oydyhkh1k6n"]
+[gd_scene load_steps=79 format=3 uid="uid://b0oydyhkh1k6n"]
 
 [ext_resource type="PackedScene" uid="uid://b6cr3w01ofst7" path="res://player.tscn" id="1_1dr8h"]
 [ext_resource type="Script" path="res://src/simulation.gd" id="1_vo1iw"]
@@ -44,7 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://c020xxjrjdf0p" path="res://assets/troop.png" id="40_80d32"]
 [ext_resource type="AudioStream" uid="uid://b7vhm5ljur00s" path="res://assets/sound/click.wav" id="40_hxhgd"]
 [ext_resource type="Texture2D" uid="uid://btkyaauihl48i" path="res://assets/door.png" id="43_2pjwn"]
-[ext_resource type="PackedScene" uid="uid://4kgy6vm137e" path="res://key.tscn" id="45_36ofq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvet"]
 size = Vector2(5741, 287)
@@ -824,6 +823,7 @@ attenuation = 1.86607
 position = Vector2(-728, 123)
 script = ExtResource("24_ufxqs")
 override_root = NodePath(".")
+enabled = null
 
 [node name="Area2D2" type="Area2D" parent="book_trigger"]
 position = Vector2(85, 28)
@@ -1004,9 +1004,6 @@ position = Vector2(-506, -3006)
 
 [node name="InteractionAudio" type="AudioStreamPlayer" parent="." groups=["INTERACT_AUDIO"]]
 stream = ExtResource("40_hxhgd")
-
-[node name="Key" parent="." instance=ExtResource("45_36ofq")]
-position = Vector2(1712, 644)
 
 [connection signal="area_entered" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Cauldron/Area2D" to="Cauldron" method="on_exited"]

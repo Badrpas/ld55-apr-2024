@@ -20,7 +20,7 @@ z_index = -380
 [node name="Cam" parent="Simulation" index="1"]
 position = Vector2(277, -282)
 
-[node name="Egg" parent="Simulation" index="2"]
+[node name="Egg" parent="Simulation" index="3"]
 position = Vector2(868, 291)
 rotation = -0.241087
 
@@ -37,7 +37,13 @@ position = Vector2(15.5, -12.5001)
 [node name="Eye" parent="Simulation/Hexagram/slots/Node2D5" index="0" instance=ExtResource("3_6ui23")]
 position = Vector2(-2.5, -4.5)
 
-[node name="Skull2" parent="Simulation" index="12"]
+[node name="book_trigger" parent="Simulation" index="8"]
+enabled = null
+
+[node name="Player" parent="Simulation" index="11"]
+position = Vector2(15, 402)
+
+[node name="Skull2" parent="Simulation" index="13"]
 visible = false
 position = Vector2(-643, 1474)
 

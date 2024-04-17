@@ -29,10 +29,11 @@ func _ready():
 	
 	if not WindowKek.Master:
 		WindowKek.Master = self
-		WindowKek.Master.make_tween.call_deferred()
+		WindowKek.Master.make_tween()
 
 	WindowKek.Master.kek.connect(func(snd):
 		if thunder_tween: thunder_tween.kill()
+		if not is_inside_tree(): return
 		thunder_tween = create_tween()
 		thunder_tween.tween_callback(func(): texture = frames[1])
 		thunder_tween.tween_interval(0.1)
@@ -52,7 +53,6 @@ func make_tween():
 	if tween: tween.stop()
 	tween = create_tween()
 	var delay = randf_range(15, 33)
-	print('next in ', delay)
 	tween.tween_interval(delay)
 	tween.tween_callback(make_tween)
 
@@ -69,7 +69,7 @@ func add_drop():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	for _c in rain_root.get_children():
 		var child: Node2D = _c
 		if child.position.y < 0: continue

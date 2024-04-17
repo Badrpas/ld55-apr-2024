@@ -70,6 +70,7 @@ func _find_interactable_in(t) -> Interactable:
 
 var snd = preload('res://assets/sound/take.wav')
 func _process(_delta):
+	# print(current_target, ' ', Input.is_action_just_pressed('UseE'))
 	if current_target and Input.is_action_just_pressed('UseE'):
 		var r = _find_interactable_in(current_target)
 		if not r: return

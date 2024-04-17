@@ -61,7 +61,7 @@ func _process(delta):
 		audio_prepare.play()
 		prepare_played = true
 	if time_to_strike <=0 and not BookTrigger.Instance.locked:
-		time_to_strike = 6 
+		time_to_strike = 4 
 		strike()
 		prepare_played = false
 
@@ -100,7 +100,7 @@ func strike():
 				sword1.get_node('AnimationPlayer').play('drop')
 				TheYeyer.StrikesHitNearSwords = 1
 		elif TheYeyer.StrikesHitNearSwords == 1:
-			if sword2.global_position.distance_to(Player.Instance.global_position) < 700:
+			if sword2.global_position.distance_to(Player.Instance.global_position) < 1000:
 				print('drop the shield!')
 				shield.get_node('AnimationPlayer').play('drop')
 				TheYeyer.StrikesHitNearSwords = 2

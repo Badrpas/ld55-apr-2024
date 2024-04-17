@@ -40,9 +40,26 @@ func unlock():
 	locked = false
 	vtarget.visible = locked
 
+func do_mouse_things():
+	var controller: PlayerController = Player.Instance.get_node('controller')
+	if controller.just_clicked:
+		if controller.mouse_world.distance_to(items.global_position) < 220:
+			Input.action_press('left')
+			Input.action_release.call_deferred('left')
+		elif controller.mouse_world.distance_to(reagents.global_position) < 220:
+			Input.action_press('right')
+			Input.action_release.call_deferred('right')
+		else:
+			Input.action_press('UseE')
+			Input.action_release.call_deferred('UseE')
+			
+
 var snd = preload('res://assets/sound/take.wav')
 func _process(_delta):
 	if not locked: return
+
+	do_mouse_things()
+
 	if Input.is_action_just_pressed('UseE'):
 		unlock.call_deferred()
 		return
